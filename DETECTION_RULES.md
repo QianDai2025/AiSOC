@@ -1,0 +1,2559 @@
+# AiSOC Fusion 模块安全规则分类列表
+
+本文档列出了 `Fusion` 模块加载的所有可执行（Executable）安全检测规则，并按安全类别（Category）进行了分类。这些规则是从 `services/fusion/app/data/detection_ruleset.json` 以及 `detection_ruleset_imported.json` 中提取的。
+
+## application (76 规则)
+
+- AI Agent Escalated to a Higher-Privilege Tool
+- AI Agent Took Action Beyond Its Granted Scope
+- AI Agent Tool Call Denied
+- AI Agent Used an Unapproved Model
+- Anthropic Workspace Created
+- Branch Protection Disabled On Protected Branch
+- Build Artifact Signing Key Rotated Outside Maintenance Window
+- Build Pipeline Fetched Public Package With Internal Name
+- CI Workflow Modified By Account Without CODEOWNER Approval
+- CNAME Pointing To Deleted SaaS Tenant
+- CORS Response With Wildcard Origin And Credentials Allowed
+- CRLF Sequence In HTTP Header Value
+- Confluence Bulk Space Export
+- Container Image With Critical CVE Pushed To Prod Registry
+- Content-Security-Policy Header Removed From Production Response
+- Credential Material Present in an AI Prompt
+- Cross-Site Scripting Attempt
+- Email Attachment with Double Extension Pattern
+- GitLab Runner Registered as Shared Without Approval
+- GraphQL Introspection Query Against Production
+- GraphQL Introspection Query in Production
+- GraphQL Mutation Executed By Anonymous Caller
+- GraphQL Query With Excessive Recursion Depth
+- Hard-Coded API Key Pattern Leaked in HTTP Request
+- Helm Install From Unknown Chart Repository
+- Internal Repository Made Public
+- JNDI LDAP Lookup Pattern (Log4Shell-Style)
+- JWT With alg=none in Authorization Header
+- Java/.NET Deserialization Marker In Body
+- Java/Python Deserialization Pattern
+- Known-Bad Scanner User-Agent
+- Kubernetes Pulled Image From Untrusted Registry
+- LLM Provider API Key Created
+- LLM Provider Admin API Key Created
+- LLM Provider Audit Logging Disabled
+- LLM Provider MFA Requirement Disabled
+- LLM Provider Owner Role Granted
+- LLM Provider Project Deleted
+- LLM Provider Service Account Created
+- Log4Shell JNDI Pattern in HTTP Header
+- Marketplace App Installed With Broad Scopes
+- Microsoft 365 Brand Impersonation Phishing URL
+- Newly Created Secret Has Slack Webhook Pattern
+- NoSQL Injection Operator In Request
+- Notion Workspace Exported By Non-Admin
+- OS Command Injection in HTTP Parameter
+- OneDrive Anonymous Sharing Link Created For Sensitive File
+- Open Redirect Pattern in URL Parameter
+- Outbound RDP Connection Initiated From Workstation to Internet
+- POST Without Referer/Origin to Sensitive Endpoint
+- Path Traversal Attempt in HTTP Request
+- Process Reading Browser Login Database
+- Prompt Injection Detected in AI Agent Context
+- Push to Protected Branch by Non-Admin
+- PyPI Package Published From New IP
+- SQL Injection Attempt in HTTP Query
+- SSH Deploy Key Added To GitHub Repository
+- SSRF Attempt to Cloud Metadata Endpoint
+- Salesforce Sandbox Refreshed Outside Change Window
+- Secret-Pattern Match in CI Job Log
+- Self-Hosted Runner Registered From External IP
+- Sensitive Data Left via an AI Agent
+- Server-Side Template Injection Pattern In Request
+- Session Cookie Failed HMAC Verification
+- SharePoint Tenant-Wide Guest Access Enabled
+- Slack File Shared To External Channel
+- Slack Private Channel Converted To Public
+- Slack Token Posted in Public Channel
+- Spring4Shell Class Loader Manipulation Pattern
+- Undeclared AI Agent Observed
+- WebSocket Upgrade From Cross-Origin Header
+- Webshell File Upload Pattern
+- Workday Banking Info Changed Without HR Ticket
+- XML External Entity Reference In Request Body
+- Zoom Cloud Recording Shared Externally
+- terraform destroy Run Targeting Production Workspace
+
+## cloud (235 规则)
+
+- AWS AMI Shared Publicly
+- AWS AssumeRole from Untrusted External Account
+- AWS Bucket Deleted
+- AWS CloudTrail Event Selector Narrowed
+- AWS CloudTrail Important Change
+- AWS CloudTrail Logging Disabled
+- AWS Config Disabling Channel/Recorder
+- AWS Config Recorder Stopped
+- AWS Console GetSigninToken Potential Abuse
+- AWS ConsoleLogin Failed Authentication
+- AWS EBS Snapshot Made Public
+- AWS EBS Snapshot Shared With Foreign Account
+- AWS EC2 Disable EBS Encryption
+- AWS EC2 DisableApiStop Protection Revoked
+- AWS EC2 Instance Launched With IMDSv1 Allowed
+- AWS EC2 Instance Launched in Unauthorized Region
+- AWS EC2 Key Pair Imported
+- AWS EC2 UserData Modified On Running Instance
+- AWS ECR Image Scan-On-Push Disabled
+- AWS ECR Repository Policy Public
+- AWS ECS ExecuteCommand Enabled On Service
+- AWS ECS Task Definition With privileged=true
+- AWS EFS Fileshare Modified or Deleted
+- AWS EFS Fileshare Mount Modified or Deleted
+- AWS EKS Cluster API Endpoint Made Public
+- AWS EKS Cluster Created or Deleted
+- AWS EKS Fargate Profile Targets default Namespace
+- AWS ElastiCache Security Group Created
+- AWS ElastiCache Security Group Modified or Deleted
+- AWS EnableRegion Command Monitoring
+- AWS Glue Development Endpoint Activity
+- AWS GuardDuty Detector Deleted
+- AWS GuardDuty Important Change
+- AWS IAM Access Key Created For Another User
+- AWS IAM AdministratorAccess Policy Attached
+- AWS IAM Login Profile Added To Existing User
+- AWS IAM MFA Removed From Privileged User
+- AWS IAM Permissions Boundary Removed
+- AWS IAM Policy Created With NotAction Wildcard
+- AWS IAM Policy Version Set With Wildcard Action
+- AWS IAM Policy with Wildcard Action
+- AWS IAM Role Trust Policy Allows Principal '*'
+- AWS IAM Role Trusts Anonymous Federation
+- AWS IAM Role Trusts Foreign Account Root
+- AWS IAM S3Browser LoginProfile Creation
+- AWS IAM S3Browser User or AccessKey Creation
+- AWS IAM SAML Provider Updated
+- AWS Identity Center Identity Provider Change
+- AWS KMS Imported Key Material Usage
+- AWS KMS Key Disabled or Scheduled for Deletion
+- AWS KMS Key Policy Allows Principal '*'
+- AWS KMS ScheduleKeyDeletion Used
+- AWS Key Pair Import Activity
+- AWS Lambda AddPermission Allows Principal '*'
+- AWS Lambda Env Var Contains Secret Pattern
+- AWS Lambda Function URL With AuthType=NONE
+- AWS Lambda Function Uses Deprecated Runtime
+- AWS Lambda Function with Public Invoke Permission
+- AWS Organizations Account Removed
+- AWS RDS Deletion Protection Disabled
+- AWS RDS IAM Authentication Disabled
+- AWS RDS Instance Modified To Publicly Accessible
+- AWS RDS Instance Set Publicly Accessible
+- AWS RDS Master User Password Reset
+- AWS RDS Snapshot Shared With Other Account
+- AWS Root Account Console Login
+- AWS Route 53 Domain Transfer Lock Disabled
+- AWS Route 53 Domain Transferred to Another Account
+- AWS Route53 Domain Transfer Out
+- AWS S3 Block Public Access Disabled
+- AWS S3 Bucket Deletion
+- AWS S3 Bucket Made Public
+- AWS S3 Bucket Policy Allows Principal '*'
+- AWS S3 Bucket Versioning Disable
+- AWS S3 Data Management Tampering
+- AWS S3 Object Lock / Retention Disabled
+- AWS S3 Replication Configured To External Account
+- AWS S3 Server Access Logging Disabled
+- AWS SAML Provider Deletion Activity
+- AWS SG Rule Allows RDP From 0.0.0.0/0
+- AWS SG Rule Allows SSH From 0.0.0.0/0
+- AWS SNS Topic Policy Allows Anonymous Subscribe
+- AWS SQS Queue Policy Allows Principal '*'
+- AWS SSM SecureString Parameter Created Without KMS
+- AWS STS GetCallerIdentity Enumeration Via TruffleHog
+- AWS Security Group Opened to 0.0.0.0/0
+- AWS SecurityHub DisableSecurityHub
+- AWS SecurityHub Findings Evasion
+- AWS Snapshot Backup Exfiltration
+- AWS Suspicious SAML Activity
+- AWS VPC Default Route Pointed At New IGW
+- AWS VPC Flow Logs Deleted
+- AWS VPC Flow Logs Disabled
+- AWS VPC Peering Connection Across Organizations
+- AWS WAF Web ACL Disassociated
+- Account Disabled or Blocked for Sign in Attempts
+- Account Lockout
+- Authentications To Important Apps Using Single Factor Authentication
+- Azure AD App Registration Granted Broad Graph Scope
+- Azure AD Application Credential Added
+- Azure AD Conditional Access Policy Disabled or Removed
+- Azure AD Login from Tor / Anonymous IP
+- Azure AD MFA Disabled for User
+- Azure AD Only Single Factor Authentication Required
+- Azure AD Owner/Global-Admin Role Assignment
+- Azure AKS Cluster API With Public FQDN
+- Azure AKS Cluster RBAC Disabled
+- Azure Active Directory Hybrid Health AD FS New Server
+- Azure Active Directory Hybrid Health AD FS Service Delete
+- Azure Blob Soft Delete Disabled
+- Azure Blueprint Assignment Removed
+- Azure Diagnostic Settings Deleted
+- Azure Domain Federation Settings Modified
+- Azure Key Vault Access Policy Adds Permission '*'
+- Azure Key Vault Key Deleted
+- Azure Key Vault Key Export Attribute Set
+- Azure Key Vault Network ACL Allows All
+- Azure Key Vault Purge Protection Disabled
+- Azure Management Group Removed
+- Azure NSG Rule Allowing 0.0.0.0/0 Inbound
+- Azure Policy Assignment Deleted
+- Azure Role Assignment Owner At Tenant Scope
+- Azure Storage Account Container Made Public
+- Azure Storage Account Firewall Disabled
+- Azure Storage Container Allows Anonymous Read
+- Azure Storage Immutability Policy Removed
+- Azure Storage Shared Access Signature Generated With Long TTL
+- Azure Subscription Permission Elevation Via AuditLogs
+- Azure Subscription Transferred
+- Azure Unusual Authentication Interruption
+- Azure VM CustomScript Extension Installed
+- Azure VM Disk Encryption Disabled
+- Azure VM RunCommand Invoked
+- BigQuery Dataset ACL Adds allUsers
+- BigQuery Dataset CMEK Removed
+- BigQuery Query Across External Project
+- BigQuery Table Deleted Within 1 Hour Of Creation
+- Bitlocker Key Retrieval
+- Change to Authentication Method
+- Changes to Device Registration Policy
+- Cloud Provider Root/Owner Email Modified
+- Cloud Provider SAML IdP Trust Changed
+- Cloud Workload Spawned with Secrets in Environment Variables
+- Cloudflare Access Policy Bypass Granted
+- Cloudflare WAF Rule Disabled
+- Cloudflare Zone Transferred Out Of Account
+- Container Registry Repository Made Public
+- Cross-Account Trust Added to Privileged Role
+- DigitalOcean Droplet Snapshot Transferred
+- Discovery Using AzureHound
+- End User Consent Blocked
+- Entra ID Admin Consent Granted To App
+- Entra ID Admin Consent Workflow Disabled
+- Entra ID App Credential Added Outside Business Hours
+- Entra ID App Granted Directory.ReadWrite.All
+- Entra ID Conditional Access Rule Excludes Privileged User
+- Entra ID Legacy Authentication Re-Enabled
+- Entra ID MFA Method Removed From Privileged User
+- Entra ID PIM Role Eligibility Self-Assigned
+- Entra ID SSPR Policy Weakened
+- Entra ID Trusted Named Location Removed
+- GCP Audit Log Sink Disabled or Deleted
+- GCP BigQuery Dataset Made Public
+- GCP Compute Public IP Attached To Instance
+- GCP Compute Shielded VM Disabled
+- GCP Firewall Rule 0.0.0.0/0 With Any Port
+- GCP Firewall Rule Allowing 0.0.0.0/0 Inbound
+- GCP GCS Bucket Set to Public
+- GCP IAM Binding Adds allUsers / allAuthenticatedUsers
+- GCP IAM Binding To External Domain
+- GCP IAM Conditional Binding Removed
+- GCP IAM Primitive Role (Owner/Editor) Granted
+- GCP Organization Policy Constraint Disabled
+- GCP Organization Policy Modified
+- GCP Project Marked for Deletion
+- GCP Project OS Login Disabled
+- GCP Service Account Disabled
+- GCP Service Account Impersonation Outside Allowlist
+- GCP Service Account Key Created
+- GCP iam.serviceAccountTokenCreator Grant
+- GCP iam.serviceAccountUser Grant
+- GCP roles/billing.admin Granted
+- GCS Bucket CORS Wildcard Origin
+- GCS Bucket IAM Granted To allUsers
+- GCS Bucket Retention Policy Removed
+- GCS Object Versioning Disabled
+- GCS Uniform Bucket-Level Access Disabled
+- GKE Binary Authorization Disabled
+- GKE Cluster Anonymous Auth Enabled
+- GKE Cluster Private Cluster Disabled
+- GKE Shielded Nodes Disabled
+- GKE Workload Identity Disabled
+- Guest Users Invited To Tenant By Non Approved Inviters
+- Increased Failed Authentications Of Any Type
+- Infra-As-Code Drift Bypassed With Manual Override
+- Ingress/Egress Security Group Modification
+- Internet-Facing Load Balancer Without WAF
+- Kubernetes Impersonate Privileged User
+- Kubernetes MutatingWebhookConfiguration With External Endpoint
+- Kubernetes NetworkPolicy Deleted In Production
+- Kubernetes Pod Default ServiceAccount Token Mount
+- Kubernetes Pod hostNetwork=true
+- Kubernetes Pod hostPID=true
+- Kubernetes Privileged Container Created
+- Kubernetes Production Namespace Deleted
+- Kubernetes Request By system:anonymous
+- Kubernetes Role Created With Wildcard Verb
+- Kubernetes ValidatingWebhookConfiguration Deleted
+- Kubernetes cluster-admin ClusterRoleBinding For Non-System Subject
+- Kubernetes pods/attach In Production Namespace
+- Kubernetes pods/exec In Production Namespace
+- LoadBalancer Security Group Modification
+- Login to Disabled Account
+- Measurable Increase Of Successful Authentications
+- Modification or Deletion of an AWS RDS Cluster
+- Multifactor Authentication Denied
+- Multifactor Authentication Interrupted
+- New AWS Lambda Function URL Configuration Created
+- New Network ACL Entry Added
+- New Network Route Added
+- OCI Tenant Administrators Group Membership Added
+- PUA - AWS TruffleHog Execution
+- Potential MFA Bypass Using Legacy Client Authentication
+- Potential Malicious Usage of CloudTrail System Manager
+- RDS Database Security Group Modification
+- SES Identity Has Been Deleted
+- Sign-in Failure Due to Conditional Access Requirements Not Met
+- Successful Authentications From Countries You Do Not Operate Out Of
+- Terraform State File Modified Outside Pipeline
+- Terraform State File Stored in Public Bucket
+- Use of Legacy Authentication Protocols
+- User Access Blocked by Azure Conditional Access
+- User Risk and MFA Registration Policy Updated
+- Users Added to Global or Device Admin Roles
+- Users Authenticating To Other Azure AD Tenants
+
+## data-exfil (13 规则)
+
+- Archive Tool Then Large Egress Within 15 Minutes
+- Backup Export to Non-Allowlisted Destination
+- Bulk Download Outside Business Hours
+- Bulk Mailbox Export From M365 Compliance Center
+- Bulk Zip Creation on File Server
+- Encrypted Archive Attachment Sent Externally
+- Git Push Containing PII or Secret Pattern
+- Inbox Rule Forwarding to External Address
+- Outbound Paste to Public Pastebin / Gist
+- SaaS File Shared to External Domain
+- Snowflake Large Result-Set Download by Non-Service Account
+- VPN Tunnel Large Download from Foreign Country
+- rclone or megacmd Process Spawned on Host
+
+## endpoint (1978 规则)
+
+- .RDP File Created By Uncommon Application
+- /etc/init.d/ Script Added By Non-Pkg Process
+- /etc/pam.d/ Configuration Modified
+- /etc/passwd Modified By Non-Pkg Process
+- /etc/passwd Read By Many Processes In Short Window
+- /etc/rc.local Modified
+- /etc/shadow Read By Non-Root Process
+- /private/etc/periodic Script Modified
+- /proc Re-Mounted With Read-Write
+- /var/log/wtmp Or /var/log/btmp Modified Suspiciously
+- 7Zip Compressing Dump Files
+- A Member Was Added to a Security-Enabled Global Group
+- A Member Was Removed From a Security-Enabled Global Group
+- A New Trust Was Created To A Domain
+- A Security-Enabled Global Group Was Deleted
+- AADInternals PowerShell Cmdlets Execution - ProccessCreation
+- AADInternals PowerShell Cmdlets Execution - PsScript
+- AD Groups Or Users Enumeration Using PowerShell - PoshModule
+- AD Groups Or Users Enumeration Using PowerShell - ScriptBlock
+- AD Object WriteDAC Access
+- ADCS Certificate Template Configuration Vulnerability
+- ADCS Certificate Template Configuration Vulnerability with Risky EKU
+- ADExplorer Writing Complete AD Snapshot Into .dat File
+- AMSI Bypass Pattern Assembly GetType
+- AMSI Bypass via DLL or Reflective Patch
+- AMSI Disabled via Registry Modification
+- AMSI Provider DLL Loaded From User Path
+- AMoS Stealer Virtual Machine Detection via osquery
+- ARP Cache Poisoning Indicators On Host
+- Abuse of Service Permissions to Hide Services Via Set-Service
+- Abuse of Service Permissions to Hide Services Via Set-Service - PS
+- Abused Debug Privilege by Arbitrary Parent Processes
+- Abusing Print Executable
+- Access to Browser Login Data
+- Accessibility Permission Granted To Untrusted App
+- Activate Suppression of Windows Security Center Notifications
+- Active Directory Certificate Services Denied Certificate Enrollment Request
+- Active Directory Computers Enumeration With Get-AdComputer
+- Active Directory Database Snapshot Via ADExplorer
+- Active Directory Group Enumeration With Get-AdGroup
+- AdFind.exe Enumeration Detected
+- Add Debugger Entry To Hangs Key For Persistence
+- Add DisallowRun Execution to Registry
+- Add Insecure Download Source To Winget
+- Add New Download Source To Winget
+- Add SafeBoot Keys Via Reg Utility
+- Add Windows Capability Via PowerShell Cmdlet
+- Add Windows Capability Via PowerShell Script
+- Add or Remove Computer from DC
+- AddinUtil.EXE Execution From Uncommon Directory
+- Admin User Remote Logon
+- Advanced IP Scanner - File Event
+- Adwind RAT / JRAT File Artifact
+- All Backups Deleted Via Wbadmin.EXE
+- Allow RDP Remote Assistance Feature
+- Alternate PowerShell Hosts - PowerShell Module
+- Always Install Elevated MSI Spawned Cmd And Powershell
+- AlwaysInstallElevated Registry Enabled
+- Amsi.DLL Loaded Via LOLBIN Process
+- Anacron Job File Added
+- Android Root Detected By MDM
+- Antivirus Filter Driver Disallowed On Dev Drive - Registry
+- Anydesk Remote Access Software Service Installation
+- Anydesk Temporary Artefact
+- App Sideloaded Outside Of Managed Store
+- App Store Receipt File Tampered
+- AppArmor Profile Disabled
+- AppInit_DLLs Registry Value Modified
+- AppLocker Prevented Application or Script from Running
+- AppX Located in Uncommon Directory Added to Deployment Pipeline
+- AppX Package Deployment Failed Due to Signing Requirements
+- AppX Package Installation Attempts Via AppInstaller.EXE
+- Apple emond Rule Installed
+- Application Compatibility Shim Database Installed
+- Application Firewall Disabled
+- Application Removed Via Wmic.EXE
+- Application Terminated Via Wmic.EXE
+- Application Uninstalled
+- Arbitrary File Download Via ConfigSecurityPolicy.EXE
+- Arbitrary File Download Via GfxDownloadWrapper.EXE
+- Arbitrary File Download Via IMEWDBLD.EXE
+- Arbitrary File Download Via MSEDGE_PROXY.EXE
+- Arbitrary File Download Via MSOHTMED.EXE
+- Arbitrary File Download Via MSPUB.EXE
+- Arbitrary File Download Via PresentationHost.EXE
+- Arbitrary File Download Via Squirrel.EXE
+- Arbitrary MSI Download Via Devinit.EXE
+- Arbitrary Shell Command Execution Via Settingcontent-Ms
+- AspNetCompiler Execution
+- Assembly DLL Creation Via AspNetCompiler
+- Assembly Loading Via CL_LoadAssembly.ps1
+- Atera Agent Installation
+- Attempts of Kerberos Coercion Via DNS SPN Spoofing
+- Audio Capture via PowerShell
+- Audio Capture via SoundRecorder
+- Audit CVE Event
+- Audit Policy Tampering Via Auditpol
+- Audit Policy Tampering Via NT Resource Kit Auditpol
+- Automated Collection Bookmarks Using Get-ChildItem PowerShell
+- Automated Collection Command PowerShell
+- Azure AD Health Monitoring Agent Registry Keys Access
+- Azure AD Health Service Agents Registry Keys Access
+- BITS Transfer Job Download From Direct IP
+- BITS Transfer Job Download From File Sharing Domains
+- BITS Transfer Job Download To Potential Suspicious Folder
+- BITS Transfer Job Downloading File Potential Suspicious Extension
+- BITS Transfer Job With Uncommon Or Suspicious Remote TLD
+- BaaUpdate.exe Suspicious DLL Load
+- Backup Catalog Deleted
+- Backup Files Deleted
+- Bad Opsec Powershell Code Artifacts
+- Baron Samedit CVE-2021-3156 Exploit Attempt
+- Base64 Encoded PowerShell Command Detected
+- Base64 MZ Header In CommandLine
+- Bash History File Truncated Or Removed
+- Binary Proxy Execution Via Dotnet-Trace.EXE
+- Binary Written to ADMIN$ via SMB
+- BitLockerTogo.EXE Execution
+- Boot Configuration Tampering Via Bcdedit.EXE
+- Browser Execution In Headless Mode
+- Browser Extension Installed Outside Allowlist
+- Browser Started with Remote Debugging
+- Burst Of File Extension Renames To Common Ransom Markers
+- Bypass UAC Using DelegateExecute
+- Bypass UAC via CMSTP
+- Bypass UAC via Fodhelper.exe
+- C# IL Code Compilation Via Ilasm.EXE
+- CLR DLL Loaded Via Office Applications
+- CMSTP Execution Process Access
+- CMSTP Execution Process Creation
+- CMSTP Execution Registry Event
+- CMSTP UAC Bypass via COM Object Access
+- COM Hijack Via HKCR\CLSID\InprocServer32 Modification
+- COM Hijack via Sdclt
+- CSExec Service File Creation
+- CSExec Service Installation
+- Cab File Extraction Via Wusa.EXE From Potentially Suspicious Paths
+- Certificate Exported From Local Certificate Store
+- Certificate Exported Via Certutil.EXE
+- Certificate Exported Via PowerShell
+- Certificate Exported Via PowerShell - ScriptBlock
+- Certificate Private Key Acquired
+- Certificate Use With No Strong Mapping
+- Change Default File Association To Executable Via Assoc
+- Change Default File Association Via Assoc
+- Change User Account Associated with the FAX Service
+- Change User Agents with WebRequest
+- Changing Existing Service ImagePath Value Via Reg.EXE
+- Chopper Webshell Process Pattern
+- Chromium Browser Headless Execution To Mockbin Like Site
+- Chromium Browser Instance Executed With Custom Extension
+- Chromium Login Data SQLite File Read
+- Clearing Windows Console History
+- ClickOnce Trust Prompt Tampering
+- Cloudflared Portable Execution
+- Cloudflared Quick Tunnel Execution
+- Cloudflared Tunnel Connections Cleanup
+- Cloudflared Tunnel Execution
+- Cloudflared Tunnels Related DNS Requests
+- ClusterRoleBinding To system:masters
+- CobaltStrike Load by Rundll32
+- CobaltStrike Named Pipe
+- Code Executed Via Office Add-in XLL File
+- Code Execution via Pcwutl.dll
+- CodeIntegrity - Blocked Driver Load With Revoked Certificate
+- CodeIntegrity - Blocked Image Load With Revoked Certificate
+- CodeIntegrity - Blocked Image/Driver Load For Policy Violation
+- CodeIntegrity - Disallowed File For Protected Processes Has Been Blocked
+- CodeIntegrity - Revoked Image Loaded
+- CodeIntegrity - Revoked Kernel Driver Loaded
+- CodeIntegrity - Unsigned Image Loaded
+- CodeIntegrity - Unsigned Kernel Module Loaded
+- CodePage Modification Via MODE.COM To Russian Language
+- Command Line Execution with Suspicious URL and AppData Strings
+- Communication To LocaltoNet Tunneling Service Initiated
+- Communication To Ngrok Tunneling Service Initiated
+- Compress Data and Lock With Password for Exfiltration With 7-ZIP
+- Compress Data and Lock With Password for Exfiltration With WINZIP
+- Compressed File Creation Via Tar.EXE
+- Compressed File Extraction Via Tar.EXE
+- Computer Password Change Via Ksetup.EXE
+- Computer System Reconnaissance Via Wmic.EXE
+- Configuration Profile Installed
+- Conhost Spawned By Uncommon Parent Process
+- Conhost.exe CommandLine Path Traversal
+- Console CodePage Lookup Via CHCP
+- Container Created With ReadOnlyRootFilesystem False
+- Container Granted CAP_SYS_ADMIN
+- Container Launched with --privileged Flag
+- Container Mounted /etc From Host
+- Container Mounted Host Root Filesystem
+- Container Mounts Host Filesystem at /host
+- Container Pulled With :latest Tag In Production
+- Container Started As UID 0 In Production
+- Container Started With --network=host
+- Container Started With --pid=host
+- ConvertTo-SecureString Cmdlet Usage Via CommandLine
+- Copy From Or To Admin Share Or Sysvol Folder
+- Copying Sensitive Files with Credential Data
+- Crash Dump Created By Operating System
+- CrashControl CrashDump Disabled
+- Create Volume Shadow Copy with Powershell
+- CreateDump Process Dump
+- CreateRemoteThread Targeting lsass.exe
+- Creation Exe for Service with Unquoted Path
+- Creation Of Non-Existent System DLL
+- Creation of a Diagcab
+- Creation of a Local Hidden User Account by Registry
+- Cred Dump Tools Dropped Files
+- Credential Dumping Activity By Python Based Tool
+- Credential Dumping Attempt Via WerFault
+- Credential Dumping Tools Service Execution - Security
+- Credential Dumping Tools Service Execution - System
+- Critical Hive In Suspicious Location Access Bits Cleared
+- Cron Job Created Pointing to /tmp or /dev/shm
+- Cross-Process Remote Thread Injection
+- Cscript/Wscript Uncommon Script Extension Execution
+- Curl Download And Execute Combination
+- Custom .app Bundle Written To /Users/Shared
+- Custom File Open Handler Executes PowerShell
+- DCERPC SMB Spoolss Named Pipe
+- DHCP Callout DLL Installation
+- DHCP Server Error Failed Loading the CallOut DLL
+- DHCP Server Loaded the CallOut DLL
+- DLL Execution Via Register-cimprovider.exe
+- DLL Execution via Rasautou.exe
+- DLL Load By System Process From Suspicious Locations
+- DLL Loaded From Network Share
+- DLL Loaded From Suspicious Location Via Cmspt.EXE
+- DLL Loaded via CertOC.EXE
+- DLL Loaded with Invalid or Untrusted Signature
+- DLL Search Order Hijackig Via Additional Space in Path
+- DLL Sideloading Of ShellChromeAPI.DLL
+- DMSA Link Attributes Modified
+- DMSA Service Account Created in Specific OUs - PowerShell
+- DNS Exfiltration and Tunneling Tools Execution
+- DNS HybridConnectionManager Service Bus
+- DNS Query Request By QuickAssist.EXE
+- DNS Query Request By Regsvr32.EXE
+- DNS Query Request To OneLaunch Update Service
+- DNS Query To Common Malware Hosting and Shortener Services
+- DNS Query To Devtunnels Domain
+- DNS Query To MEGA Hosting Website
+- DNS Query To MEGA Hosting Website - DNS Client
+- DNS Query To Put.io - DNS Client
+- DNS Query To Ufile.io
+- DNS Query To Ufile.io - DNS Client
+- DNS Query To Visual Studio Code Tunnels Domain
+- DNS Query Tor .Onion Address - Sysmon
+- DNS Query by Finger Utility
+- DNS Query for Anonfiles.com Domain - DNS Client
+- DNS Query for Anonfiles.com Domain - Sysmon
+- DNS Server Error Failed Loading the ServerLevelPluginDLL
+- DNS-over-HTTPS Enabled by Registry
+- DPAPI Backup Keys And Certificate Export Activity IOC
+- DPAPI Domain Backup Key Extraction
+- DPAPI Domain Master Key Backup Attempt
+- DPAPI Master Key File Read From Roaming Dir
+- DSInternals Suspicious PowerShell Cmdlets
+- DSInternals Suspicious PowerShell Cmdlets - ScriptBlock
+- DYLD_INSERT_LIBRARIES Set To /tmp Or User Path
+- Data Copied To Clipboard Via Clip.EXE
+- Data Export From MSSQL Table Via BCP.EXE
+- Defender Real-Time Monitoring Disabled
+- Delete Important Scheduled Task
+- Delete Volume Shadow Copies Via WMI With PowerShell
+- Deleted Data Overwritten Via Cipher.EXE
+- Deletion of Volume Shadow Copies via WMI with PowerShell
+- Deletion of Volume Shadow Copies via WMI with PowerShell - PS Script
+- Denied Access To Remote Desktop
+- Deny Service Access Using Security Descriptor Tampering Via Sc.EXE
+- Deployment AppX Package Was Blocked By AppLocker
+- Deployment Of The AppX Package Was Blocked By The Policy
+- Detected Windows Software Discovery
+- Detected Windows Software Discovery - PowerShell
+- Devcon Execution Disabling VMware VMCI Device
+- Developer Mode Enabled On Managed Device
+- Device Installation Blocked
+- Device Marked Out Of MDM Compliance
+- DeviceCredentialDeployment Execution
+- Devtoolslauncher.exe Executes Specified Binary
+- DiagTrackEoP Default Login Username
+- Diagnostic Library Sdiageng.DLL Loaded By Msdt.EXE
+- DirLister Execution
+- Direct Autorun Keys Modification
+- Directory Removal Via Rmdir
+- DirectorySearcher Powershell Exploitation
+- Disable Administrative Share Creation at Startup
+- Disable Exploit Guard Network Protection on Windows Defender
+- Disable Important Scheduled Task
+- Disable Internal Tools or Feature in Registry
+- Disable Macro Runtime Scan Scope
+- Disable Microsoft Defender Firewall via Registry
+- Disable PUA Protection on Windows Defender
+- Disable Powershell Command History
+- Disable Privacy Settings Experience in Registry
+- Disable Security Events Logging Adding Reg Key MiniNt
+- Disable Windows Firewall by Registry
+- Disable Windows IIS HTTP Logging
+- Disable Windows Security Center Notifications
+- Disable of ETW Trace - Powershell
+- Disable-WindowsOptionalFeature Command PowerShell
+- Disabled IE Security Features
+- Disabled Volume Snapshots
+- Disabled Windows Defender Eventlog
+- Discovery of a System Time
+- Diskshadow Script Mode - Execution From Potential Suspicious Location
+- Dism Remove Online Package
+- Displaying Hidden Files Feature Disabled
+- DllUnregisterServer Function Call Via Msiexec.EXE
+- Docker Daemon Listening On TCP Socket
+- Docker Socket Accessed By Non-Root User
+- Docker Socket Mounted Into Container
+- Docker-In-Docker Pattern Detected
+- Domain Trust Discovery Via Dsquery
+- DotNET Assembly DLL Loaded Via Office Application
+- DotNet CLR DLL Loaded By Scripting Applications
+- Driver Added To Disallowed Images In HVCI - Registry
+- Driver Load From A Temporary Directory
+- Driver Signed by Microsoft Loaded with Vulnerable Hash (BYOVD)
+- Driver/DLL Installation Via Odbcconf.EXE
+- Drop Binaries Into Spool Drivers Color Folder
+- Dump Credentials from Windows Credential Manager With PowerShell
+- Dump Ntds.dit To Suspicious Location
+- DumpMinitool Execution
+- DumpStack.log Defender Evasion
+- Dumping Process via Sqldumper.exe
+- Dumping of Sensitive Hives Via Reg.EXE
+- Dynamic CSharp Compile Artefact
+- EDR / AV Service Stopped or Unloaded
+- ETW Disabled Via Registry
+- ETW Logging Disabled For SCM
+- ETW Logging Disabled For rpcrt4.dll
+- ETW Logging Disabled In .NET Processes - Registry
+- ETW Logging Disabled In .NET Processes - Sysmon Registry
+- ETW Logging Tamper In .NET Processes Via CommandLine
+- ETW Logging/Processing Option Disabled On IIS Server
+- ETW Tampering / Logging Disable
+- ETW Trace Evasion Activity
+- Email Exifiltration Via Powershell
+- Enable LM Hash Storage
+- Enable LM Hash Storage - ProcCreation
+- Enable Local Manifest Installation With Winget
+- Enable Microsoft Dynamic Data Exchange
+- Enable Remote Connection Between Anonymous Computer - AllowAnonymousCallback
+- Enable Windows Remote Management
+- Enabled User Right in AD to Control User Objects
+- Enabling COR Profiler Environment Variables
+- Enumerate All Information With Whoami.EXE
+- Enumerate Credentials from Windows Credential Manager With PowerShell
+- Enumeration for Credentials in Registry
+- Esentutl Gather Credentials
+- Esentutl Steals Browser Information
+- Esentutl Volume Shadow Copy Service Keys
+- EventLog EVTX File Deleted
+- Exchange PowerShell Cmdlet History Deleted
+- Exec Into Pod In kube-system Namespace
+- Execute Code with Pester.bat
+- Execute Code with Pester.bat as Parent
+- Execute Files with Msdeploy.exe
+- Execute Invoke-command on Remote Host
+- Execute Pcwrun.EXE To Leverage Follina
+- Execution of Powershell Script in Public Folder
+- Explorer Process Tree Break
+- Exports Critical Registry Keys To a File
+- Exports Registry Key To an Alternate Data Stream
+- External Disk Drive Or USB Storage Device Was Recognized By The System
+- Extracting Information with PowerShell
+- Failed Code Integrity Checks
+- Failed DNS Zone Transfer
+- Failed MSExchange Transport Agent Installation
+- File And SubFolder Enumeration Via Dir Command
+- File Creation In Suspicious Directory By Msdt.EXE
+- File Decoded From Base64/Hex Via Certutil.EXE
+- File Decryption Using Gpg4win
+- File Deletion Via Del
+- File Download And Execution Via IEExec.EXE
+- File Download From Browser Process Via Inline URL
+- File Download Using ProtocolHandler.exe
+- File Download Via Bitsadmin
+- File Download Via Bitsadmin To A Suspicious Target Folder
+- File Download Via InstallUtil.EXE
+- File Download Via Windows Defender MpCmpRun.EXE
+- File Download via CertOC.EXE
+- File Encoded To Base64 Via Certutil.EXE
+- File Encryption Using Gpg4win
+- File Encryption/Decryption Via Gpg4win From Suspicious Locations
+- File Explorer Folder Opened Using Explorer Folder Shortcut Via Shell
+- File In Suspicious Location Encoded To Base64 Via Certutil.EXE
+- File Recovery From Backup Via Wbadmin.EXE
+- File With Suspicious Extension Downloaded Via Bitsadmin
+- File Written Into /etc/cron.d Outside Package Mgr
+- FileFix - Command Evidence in TypedPaths
+- Files Added To An Archive Using Rar.EXE
+- Files With System DLL Name In Unsuspected Locations
+- Find My Device Disabled
+- Find My Mac Disabled
+- Findstr GPP Passwords
+- Findstr Launching .lnk File
+- Finger.EXE Execution
+- Firewall Configuration Discovery Via Netsh.EXE
+- Firewall Rule Update Via Netsh.EXE
+- Folder Compress To Potentially Suspicious Output Via Compress-Archive Cmdlet
+- Folder Removed From Exploit Guard ProtectedFolders List - Registry
+- Forfiles Command Execution
+- Fsutil Drive Enumeration
+- Fsutil Suspicious Invocation
+- Function Call From Undocumented COM Interface EditionUpgradeManager
+- GAC DLL Loaded Via Office Applications
+- GatherNetworkInfo.VBS Reconnaissance Script Output
+- Get-ADUser Enumeration Using UserAccountControl Flags
+- Github Self-Hosted Runner Execution
+- GoToAssist Temporary Installation Artefact
+- Google Account Changed On Managed Android Device
+- Gpresult Display Group Policy Information
+- Group Membership Reconnaissance Via Whoami.EXE
+- Group Policy Abuse for Privilege Addition
+- Gzip Archive Decode Via PowerShell
+- HH.EXE Execution
+- HISTFILE Set To /dev/null
+- HKLM BootExecute Registry Value Modified
+- HKTL - SharpSuccessor Privilege Escalation Tool Execution
+- HTML Help HH.EXE Suspicious Child Process
+- HTTP Logging Disabled On IIS Server
+- HackTool - ADCSPwn Execution
+- HackTool - Bloodhound/Sharphound Execution
+- HackTool - CACTUSTORCH Remote Thread Creation
+- HackTool - Certify Execution
+- HackTool - Certipy Execution
+- HackTool - CoercedPotato Execution
+- HackTool - CoercedPotato Named Pipe Creation
+- HackTool - Covenant PowerShell Launcher
+- HackTool - CrackMapExec Execution
+- HackTool - CrackMapExec Execution Patterns
+- HackTool - CrackMapExec PowerShell Obfuscation
+- HackTool - CrackMapExec Process Patterns
+- HackTool - CreateMiniDump Execution
+- HackTool - Credential Dumping Tools Named Pipe Created
+- HackTool - DInjector PowerShell Cradle Execution
+- HackTool - Default PowerSploit/Empire Scheduled Task Creation
+- HackTool - DiagTrackEoP Default Named Pipe
+- HackTool - Doppelanger LSASS Dumper Execution
+- HackTool - Dumpert Process Dumper Default File
+- HackTool - Dumpert Process Dumper Execution
+- HackTool - EDRSilencer Execution
+- HackTool - EDRSilencer Execution - Filter Added
+- HackTool - Empire PowerShell Launch Parameters
+- HackTool - Empire PowerShell UAC Bypass
+- HackTool - F-Secure C3 Load by Rundll32
+- HackTool - GMER Rootkit Detector and Remover Execution
+- HackTool - Generic Process Access
+- HackTool - HandleKatz Duplicating LSASS Handle
+- HackTool - HandleKatz LSASS Dumper Execution
+- HackTool - Hashcat Password Cracker Execution
+- HackTool - HollowReaper Execution
+- HackTool - Htran/NATBypass Execution
+- HackTool - Hydra Password Bruteforce Execution
+- HackTool - Impacket Tools Execution
+- HackTool - Impersonate Execution
+- HackTool - Inveigh Execution
+- HackTool - Inveigh Execution Artefacts
+- HackTool - Koadic Execution
+- HackTool - Koh Default Named Pipe
+- HackTool - KrbRelay Execution
+- HackTool - KrbRelayUp Execution
+- HackTool - LaZagne Execution
+- HackTool - LittleCorporal Generated Maldoc Injection
+- HackTool - LocalPotato Execution
+- HackTool - Mimikatz Execution
+- HackTool - Mimikatz Kirbi File Creation
+- HackTool - NPPSpy Hacktool Usage
+- HackTool - NetExec Execution
+- HackTool - NetExec File Indicators
+- HackTool - NoFilter Execution
+- HackTool - PCHunter Execution
+- HackTool - PPID Spoofing SelectMyParent Tool Execution
+- HackTool - Potential CobaltStrike Process Injection
+- HackTool - PowerTool Execution
+- HackTool - Powerup Write Hijack DLL
+- HackTool - PurpleSharp Execution
+- HackTool - Pypykatz Credentials Dumping Activity
+- HackTool - Quarks PwDump Execution
+- HackTool - QuarksPwDump Dump File
+- HackTool - RedMimicry Winnti Playbook Execution
+- HackTool - RemoteKrbRelay Execution
+- HackTool - RemoteKrbRelay SMB Relay Secrets Dump Module Indicators
+- HackTool - Rubeus Execution
+- HackTool - Rubeus Execution - ScriptBlock
+- HackTool - SILENTTRINITY Stager DLL Load
+- HackTool - SILENTTRINITY Stager Execution
+- HackTool - SOAPHound Execution
+- HackTool - SafetyKatz Dump Indicator
+- HackTool - SafetyKatz Execution
+- HackTool - SecurityXploded Execution
+- HackTool - SharPersist Execution
+- HackTool - SharpChisel Execution
+- HackTool - SharpDPAPI Execution
+- HackTool - SharpEvtMute DLL Load
+- HackTool - SharpEvtMute Execution
+- HackTool - SharpImpersonation Execution
+- HackTool - SharpLDAPmonitor Execution
+- HackTool - SharpLdapWhoami Execution
+- HackTool - SharpMove Tool Execution
+- HackTool - SharpUp PrivEsc Tool Execution
+- HackTool - SharpView Execution
+- HackTool - SharpWSUS/WSUSpendu Execution
+- HackTool - Sliver C2 Implant Activity Pattern
+- HackTool - Stracciatella Execution
+- HackTool - SysmonEOP Execution
+- HackTool - TruffleSnout Execution
+- HackTool - Typical HiveNightmare SAM File Export
+- HackTool - UACMe Akagi Execution
+- HackTool - WinPwn Execution
+- HackTool - WinPwn Execution - ScriptBlock
+- HackTool - WinRM Access Via Evil-WinRM
+- HackTool - Windows Credential Editor (WCE) Execution
+- HackTool - Wmiexec Default Powershell Command
+- HackTool - XORDump Execution
+- HackTool - winPEAS Execution
+- HackTool Named File Stream Created
+- Hacktool - EDR-Freeze Execution
+- Hacktool Execution - Imphash
+- Hacktool Execution - PE Metadata
+- Hacktool Ruler
+- Hardware Model Reconnaissance Via Wmic.EXE
+- Harvesting Of Wifi Credentials Via Netsh.EXE
+- Hidden Executable In NTFS Alternate Data Stream
+- Hidden Powershell in Link File Pattern
+- Hide Schedule Task Via Index Value Tamper
+- Hiding User Account Via SpecialAccounts Registry Key
+- Hiding User Account Via SpecialAccounts Registry Key - CommandLine
+- Hijack Legit RDP Session to Move Laterally
+- Host Advertising As DHCP Server
+- Host Firewall Disabled
+- Host Firewall Disabled On Managed Endpoint
+- Hosts File Modified
+- HybridConnectionManager Service Installation
+- HybridConnectionManager Service Installation - Registry
+- Hypervisor Enforced Paging Translation Disabled
+- Hypervisor-protected Code Integrity (HVCI) Related Registry Tampering Via CommandLine
+- IE ZoneMap Setting Downgraded To MyComputer Zone For HTTP Protocols
+- IE ZoneMap Setting Downgraded To MyComputer Zone For HTTP Protocols Via CLI
+- IIS WebServer Access Logs Deleted
+- IIS WebServer Log Deletion via CommandLine Utilities
+- ISO File Created Within Temp Folders
+- ISO File Mounted From User Temp
+- ISO or Image Mount Indicator in Recent Files
+- Image File Execution Options Debugger Set
+- ImagingDevices Unusual Parent/Child Processes
+- Impacket PsExec Execution
+- Impacket secretsdump.py Pattern Detected
+- Import LDAP Data Interchange Format File Via Ldifde.EXE
+- Import PowerShell Modules From Suspicious Directories
+- Import PowerShell Modules From Suspicious Directories - ProcCreation
+- Important Scheduled Task Deleted or Disabled
+- Important Windows Event Auditing Disabled
+- Important Windows Eventlog Cleared
+- Important Windows Service Terminated Unexpectedly
+- Important Windows Service Terminated With Error
+- Indirect Command Execution By Program Compatibility Wizard
+- Indirect Command Execution via SFTP ProxyCommand
+- Indirect Inline Command Execution Via Bash.EXE
+- InfDefaultInstall.exe .inf Execution
+- Insecure Proxy/DOH Transfer Via Curl.EXE
+- Insensitive Subfolder Search Via Findstr.EXE
+- Install New Package Via Winget Local Manifest
+- InstallUtil.exe Run From Temp Path
+- Installation of TeamViewer Desktop
+- Installation of WSL Kali-Linux
+- Interactive AT Job
+- Interesting Service Enumeration Via Sc.EXE
+- Invocation of Active Directory Diagnostic Tool (ntdsutil.exe)
+- Invoke-Obfuscation CLIP+ Launcher
+- Invoke-Obfuscation CLIP+ Launcher - Security
+- Invoke-Obfuscation CLIP+ Launcher - System
+- Invoke-Obfuscation COMPRESS OBFUSCATION
+- Invoke-Obfuscation COMPRESS OBFUSCATION - PowerShell
+- Invoke-Obfuscation COMPRESS OBFUSCATION - PowerShell Module
+- Invoke-Obfuscation COMPRESS OBFUSCATION - Security
+- Invoke-Obfuscation COMPRESS OBFUSCATION - System
+- Invoke-Obfuscation RUNDLL LAUNCHER - PowerShell
+- Invoke-Obfuscation RUNDLL LAUNCHER - PowerShell Module
+- Invoke-Obfuscation RUNDLL LAUNCHER - Security
+- Invoke-Obfuscation RUNDLL LAUNCHER - System
+- Invoke-Obfuscation STDIN+ Launcher - Security
+- Invoke-Obfuscation STDIN+ Launcher - System
+- Invoke-Obfuscation VAR+ Launcher - Security
+- Invoke-Obfuscation VAR+ Launcher - System
+- Invoke-Obfuscation VAR++ LAUNCHER OBFUSCATION
+- Invoke-Obfuscation VAR++ LAUNCHER OBFUSCATION - Security
+- Invoke-Obfuscation VAR++ LAUNCHER OBFUSCATION - System
+- Invoke-Obfuscation Via Stdin - Security
+- Invoke-Obfuscation Via Stdin - System
+- Invoke-Obfuscation Via Use Clip - Security
+- Invoke-Obfuscation Via Use Clip - System
+- Invoke-Obfuscation Via Use MSHTA
+- Invoke-Obfuscation Via Use MSHTA - PowerShell
+- Invoke-Obfuscation Via Use MSHTA - PowerShell Module
+- Invoke-Obfuscation Via Use MSHTA - Security
+- Invoke-Obfuscation Via Use MSHTA - System
+- Invoke-Obfuscation Via Use Rundll32 - PowerShell
+- Invoke-Obfuscation Via Use Rundll32 - PowerShell Module
+- Invoke-Obfuscation Via Use Rundll32 - Security
+- Invoke-Obfuscation Via Use Rundll32 - System
+- JScript Compiler Execution
+- Kerberos AS-REP Roasting Pattern
+- Kerberos Manipulation
+- Kernel Memory Dump Via LiveKD
+- Kernel Module Loaded With insmod
+- Kernel Module Loaded from Non-Standard Path
+- KrbRelayUp Service Installation
+- Kubernetes Verb 'impersonate' Used
+- LD_PRELOAD Pointing To /tmp
+- LNK File Executed From Removable Media
+- LOLBAS Binary Used for Download or Execution
+- LOLBAS Data Exfiltration by DataSvcUtil.exe
+- LSA PPL Protection Setting Modification via CommandLine
+- LSASS Access From Potentially White-Listed Processes
+- LSASS Dump Keyword In CommandLine
+- LSASS Memory Access by Tool With Dump Keyword In Name
+- LSASS Memory Read by Untrusted Process
+- LSASS Process Crashed - Application
+- LSASS Process Dump Artefact In CrashDumps Folder
+- LSASS Process Memory Dump Creation Via Taskmgr.EXE
+- LSASS Process Memory Dump Files
+- LSASS Process Reconnaissance Via Findstr.EXE
+- Large Archive Created In /tmp
+- Launch-VsDevShell.PS1 Proxy Execution
+- LaunchDaemon Plist Written To /Library/LaunchDaemons
+- Legitimate Application Dropped Archive
+- Legitimate Application Dropped Executable
+- Legitimate Application Dropped Script
+- Legitimate Application Writing Files In Uncommon Location
+- Likely Cryptominer Process Detected
+- Linux osqueryd Service Stop Detected via auditd
+- Live Memory Dump Using Powershell
+- LiveKD Driver Creation
+- LiveKD Kernel Memory Dump File Created
+- Loaded Module Enumeration Via Tasklist.EXE
+- Local Accounts Discovery
+- Local File Read Using Curl.EXE
+- Local Groups Reconnaissance Via Wmic.EXE
+- Local Privilege Escalation Indicator TabTip
+- Local User Creation
+- Locked Workstation
+- Logged-On User Password Change Via Ksetup.EXE
+- Login Item Added Via osascript
+- Logon Script Registry Modified
+- Lolbas OneDriveStandaloneUpdater.exe Proxy Download
+- Lolbin Runexehelper Use As Proxy
+- Lolbin Unregmp2.exe Use As Proxy
+- Lsass Full Dump Request Via DumpType Registry Settings
+- Lsass Memory Dump via Comsvcs DLL
+- MDM Enrollment Profile Removed
+- MDM Profile Removal Attempted
+- MMC Executing Files with Reversed Extensions Using RTLO Abuse
+- MMC Loading Script Engines DLLs
+- MMC Spawning Windows Shell
+- MMC20 Lateral Movement
+- MSBuild Running Inline Task XML From User Path
+- MSExchange Transport Agent Installation
+- MSHTA Execution with Suspicious File Extensions
+- MSI Installation From Suspicious Locations
+- MSI Installation From Web
+- MSSQL Add Account To Sysadmin Role
+- MSSQL Destructive Query
+- MSSQL Disable Audit Settings
+- MSSQL SPProcoption Set
+- MSSQL Server Failed Logon
+- MSSQL Server Failed Logon From External Network
+- MSSQL XPCmdshell Option Change
+- MSSQL XPCmdshell Suspicious Execution
+- Mach-O Binary Executed From /Users/Shared
+- Macro Enabled In A Potentially Suspicious Document
+- Malicious Base64 Encoded PowerShell Keywords in Command Lines
+- Malicious DLL File Dropped in the Teams or OneDrive Folder
+- Malicious Driver Load
+- Malicious Driver Load By Name
+- Malicious Named Pipe Created
+- Malicious Nishang PowerShell Commandlets
+- Malicious PowerShell Commandlets - PoshModule
+- Malicious PowerShell Commandlets - ProcessCreation
+- Malicious PowerShell Commandlets - ScriptBlock
+- Malicious PowerShell Keywords
+- Malicious PowerShell Scripts - FileCreation
+- Malicious PowerShell Scripts - PoshModule
+- Malicious ShellIntel PowerShell Commandlets
+- Malicious Windows Script Components File Execution by TAEF Detection
+- ManageEngine Endpoint Central Dctask64.EXE Potential Abuse
+- Manipulation of User Computer or Group Security Principals Across AD
+- Many Secrets Read From Single Service Account
+- Mass File Rename To Ransom Marker Extension
+- Mass Shadow Copy Deletion Via WMI
+- MaxMpxCt Registry Value Changed
+- Mesh Agent Service Installation
+- Microsoft Defender Blocked from Loading Unsigned DLL
+- Microsoft Defender Disabled Via Registry
+- Microsoft Defender Path Exclusion Added
+- Microsoft Defender Tamper Protection Trigger
+- Microsoft Excel Add-In Loaded From Uncommon Location
+- Microsoft IIS Connection Strings Decryption
+- Microsoft IIS Service Account Password Dumped
+- Microsoft Malware Protection Engine Crash
+- Microsoft Malware Protection Engine Crash - WER
+- Microsoft VBA For Outlook Addin Loaded Via Outlook
+- Mimikatz Marker String In Process Command Line
+- Modify Group Policy Settings
+- Modify Group Policy Settings - ScriptBlockLogging
+- Monitoring For Persistence Via BITS
+- Moriya Rootkit - System
+- MpiExec Lolbin
+- Mshtml.DLL RunHTMLApplication Suspicious Usage
+- MsiExec Web Install
+- Mstsc.EXE Execution From Uncommon Parent
+- Msxsl.EXE Execution
+- Multiple Authorized Keys Appended In Short Window
+- Multiple Critical Services Stopped In Quick Burst
+- MutatingWebhookConfiguration Modified
+- NET NGenAssemblyUsageLog Registry Key Tamper
+- NSS Module Installed In /usr/lib
+- NTDS Exfiltration Filename Patterns
+- NTDS.DIT Created
+- NTFS Alternate Data Stream
+- NTFS Vulnerability Exploitation
+- NTLM Brute Force
+- NTLM Logon
+- NTLMv1 Logon Between Client and Server
+- Narrator's Feedback-Hub Persistence
+- Net WebClient Casing Anomalies
+- NetNTLM Downgrade Attack
+- NetSupport Manager Service Install
+- Netcat The Powershell Version
+- Netsh Allow Group Policy on Microsoft Defender Firewall
+- Network Communication Initiated To File Sharing Domains From Process Located In Suspicious Folder
+- Network Communication Initiated To Portmap.IO Domain
+- Network Communication With Crypto Mining Pool
+- Network Connection Initiated By AddinUtil.EXE
+- Network Connection Initiated By Eqnedt32.EXE
+- Network Connection Initiated By IMEWDBLD.EXE
+- Network Connection Initiated By Regsvr32.EXE
+- Network Connection Initiated To BTunnels Domains
+- Network Connection Initiated To Cloudflared Tunnels Domains
+- Network Connection Initiated To DevTunnels Domain
+- Network Connection Initiated To Mega.nz
+- Network Connection Initiated To Visual Studio Code Tunnels Domain
+- Network Connection Initiated via Finger.EXE
+- Network Interface Set To Promiscuous Mode
+- Network Proxy Configured On Managed Device
+- Network Reconnaissance Activity
+- NetworkPolicy Deleted In Restricted Namespace
+- New ActiveScriptEventConsumer Created Via Wmic.EXE
+- New Application in AppCompat
+- New BITS Job Created Via Bitsadmin
+- New BITS Job Created Via PowerShell
+- New BgInfo.EXE Custom DB Path Registry Configuration
+- New BgInfo.EXE Custom VBScript Registry Configuration
+- New BgInfo.EXE Custom WMI Query Registry Configuration
+- New Capture Session Launched Via DXCap.EXE
+- New Custom Shim Database Created
+- New DLL Added to AppCertDlls Registry Key
+- New DLL Registered Via Odbcconf.EXE
+- New DMSA Service Account Created in Specific OUs
+- New DNS ServerLevelPluginDll Installed
+- New DNS ServerLevelPluginDll Installed Via Dnscmd.EXE
+- New File Added Under /etc/sudoers.d/
+- New File Association Using Exefile
+- New Firewall Rule Added In Windows Firewall Exception List Via WmiPrvSE.EXE
+- New Generic Credentials Added Via Cmdkey.EXE
+- New Kernel Driver Via SC.EXE
+- New Network Trace Capture Started Via Netsh.EXE
+- New Outlook Macro Created
+- New PDQDeploy Service - Client Side
+- New PDQDeploy Service - Server Side
+- New PortProxy Registry Entry Added
+- New PowerShell Instance Created
+- New Process Created Via Wmic.EXE
+- New Root Certificate Installed Via CertMgr.EXE
+- New Root Certificate Installed Via Certutil.EXE
+- New Root or CA or AuthRoot Certificate to Store
+- New Service Creation Using PowerShell
+- New Service Installed with Suspicious Binary Path
+- New User Created Via Net.EXE
+- New User Created Via Net.EXE With Never Expire Option
+- New Virtual Smart Card Created Via TpmVscMgr.EXE
+- Ngrok Usage with Remote Desktop Service
+- Nltest.EXE Execution
+- No Suitable Encryption Key Found For Generating Kerberos Ticket
+- Node Process Executions
+- NodeJS Execution of JavaScript File
+- Non-privileged Usage of Reg or Powershell
+- Notepad Password Files Discovery
+- Nslookup PowerShell Download Cradle
+- Nslookup PowerShell Download Cradle - ProcessCreation
+- NtdllPipe Like Activity Execution
+- Ntdsutil Abuse
+- Obfuscated PowerShell MSI Install via WindowsInstaller COM
+- Obfuscated PowerShell OneLiner Execution
+- Octopus Scanner Malware
+- Odbcconf.EXE Suspicious DLL Location
+- Office Application Spawned mshta.exe
+- Office Application Spawned rundll32.exe
+- Office Application Spawns Shell or Scripting Engine
+- Office Application Startup - Office Test
+- Office Macro File Creation From Suspicious Process
+- Office Macro File Download
+- Office Macros Warning Disabled
+- Old TLS1.0/TLS1.1 Protocol Version Enabled
+- OneNote Spawned cmd.exe
+- OneNote.EXE Execution of Malicious Embedded Scripts
+- OpenEDR Spawning Command Shell
+- OpenSSH Server Listening On Socket
+- OpenWith.exe Executes Specified Binary
+- Operator Bloopers Cobalt Strike Commands
+- Operator Bloopers Cobalt Strike Modules
+- Outgoing Logon with New Credentials
+- Outlook EnableUnsafeClientMailRules Setting Enabled
+- Outlook EnableUnsafeClientMailRules Setting Enabled - Registry
+- Outlook Macro Execution Without Warning Setting Enabled
+- PAExec Service Created
+- PAExec Service Installation
+- PCRE.NET Package Image Load
+- PCRE.NET Package Temp Files
+- PDF File Created By RegEdit.EXE
+- PDF Reader Spawned Shell
+- PDQ Deploy Remote Adminstartion Tool Execution
+- PPL Tampering Via WerFaultSecure
+- PSAsyncShell - Asynchronous TCP Reverse Shell
+- PSEXEC Remote Execution File Artefact
+- PSEXESVC Service Created (Remote PsExec)
+- PSExec and WMI Process Creations Block
+- PUA - 3Proxy Execution
+- PUA - AdFind Suspicious Execution
+- PUA - AdFind.EXE Execution
+- PUA - Adidnsdump Execution
+- PUA - Advanced IP Scanner Execution
+- PUA - Advanced Port Scanner Execution
+- PUA - AdvancedRun Execution
+- PUA - AdvancedRun Suspicious Execution
+- PUA - CSExec Default Named Pipe
+- PUA - Chisel Tunneling Tool Execution
+- PUA - CleanWipe Execution
+- PUA - Crassus Execution
+- PUA - CsExec Execution
+- PUA - DIT Snapshot Viewer
+- PUA - DefenderCheck Execution
+- PUA - Fast Reverse Proxy (FRP) Execution
+- PUA - Kernel Driver Utility (KDU) Execution
+- PUA - Memory Dump Mount Via MemProcFS
+- PUA - Mouse Lock Execution
+- PUA - NPS Tunneling Tool Execution
+- PUA - NSudo Execution
+- PUA - Netcat Suspicious Execution
+- PUA - Ngrok Execution
+- PUA - NimScan Execution
+- PUA - Nimgrab Execution
+- PUA - NirCmd Execution
+- PUA - NirCmd Execution As LOCAL SYSTEM
+- PUA - Nmap/Zenmap Execution
+- PUA - PAExec Default Named Pipe
+- PUA - PingCastle Execution
+- PUA - Potential PE Metadata Tamper Using Rcedit
+- PUA - Process Hacker Driver Load
+- PUA - Process Hacker Execution
+- PUA - Radmin Viewer Utility Execution
+- PUA - Rclone Execution
+- PUA - RemCom Default Named Pipe
+- PUA - Restic Backup Tool Execution
+- PUA - RunXCmd Execution
+- PUA - Seatbelt Execution
+- PUA - SoftPerfect Netscan Execution
+- PUA - Suspicious ActiveDirectory Enumeration Via AdFind.EXE
+- PUA - Sysinternal Tool Execution - Registry
+- PUA - Sysinternals Tools Execution - Registry
+- PUA - System Informer Driver Load
+- PUA - System Informer Execution
+- PUA - TruffleHog Execution
+- PUA - WebBrowserPassView Execution
+- PUA - Wsudo Suspicious Execution
+- PUA- IOX Tunneling Tool Execution
+- Password Change on Directory Service Restore Mode (DSRM) Account
+- Password Dumper Activity on LSASS
+- Password Dumper Remote Thread in LSASS
+- Password Policy Discovery With Get-AdDefaultDomainPasswordPolicy
+- Password Policy Enumerated
+- Password Protected ZIP File Opened
+- Password Protected ZIP File Opened (Email Attachment)
+- Password Protected ZIP File Opened (Suspicious Filenames)
+- Password Set to Never Expire via WMI
+- Periodic Backup For System Registry Hives Enabled
+- Perl Inline Command Execution
+- Permanent WMI EventConsumer Created
+- Permanent WMI EventFilter Created
+- Permission Check Via Accesschk.EXE
+- Permission Misconfiguration Reconnaissance Via Findstr.EXE
+- Persistence Via Disk Cleanup Handler - Autorun
+- Persistence Via Sticky Key Backdoor
+- Persistence Via TypedPaths - CommandLine
+- Persistence and Execution at Scale via GPO Scheduled Task
+- Persistence via Registry Run Key Write
+- Personal Hotspot Or Bluetooth Tethering Enabled In Restricted Site
+- Phishing Pattern ISO in Archive
+- Php Inline Command Execution
+- PktMon.EXE Execution
+- PlistBuddy Used By Non-System Process
+- Pod Allows Privilege Escalation
+- Pod Created From Known Cryptominer Image Family
+- Pod Created With hostIPC: true
+- Pod Created With hostNetwork: true
+- Pod Created With hostPID: true
+- Pod Created With privileged Security Context
+- Pod Security Admission Mode Disabled For Namespace
+- Port Forwarding Activity Via SSH.EXE
+- Portable Gpg.EXE Execution
+- Possible DC Shadow Attack
+- Possible Impacket SecretDump Remote Activity
+- Possible PetitPotam Coerce Authentication Attempt
+- Possible Privilege Escalation via Weak Service Permissions
+- Possible Shadow Credentials Added
+- Potential AMSI Bypass Script Using NULL Bits
+- Potential AMSI Bypass Using NULL Bits
+- Potential AMSI Bypass Via .NET Reflection
+- Potential AS-REP Roasting via Kerberos TGT Requests
+- Potential Access Token Abuse
+- Potential Active Directory Enumeration Using AD Module - ProcCreation
+- Potential Active Directory Enumeration Using AD Module - PsModule
+- Potential Active Directory Enumeration Using AD Module - PsScript
+- Potential Adplus.EXE Abuse
+- Potential Amazon SSM Agent Hijacking
+- Potential Application Whitelisting Bypass via Dnx.EXE
+- Potential Arbitrary Command Execution Using Msdt.EXE
+- Potential Arbitrary Command Execution Via FTP.EXE
+- Potential Arbitrary DLL Load Using Winword
+- Potential Arbitrary File Download Using Office Application
+- Potential Arbitrary File Download Via Cmdl32.EXE
+- Potential Binary Proxy Execution Via Cdb.EXE
+- Potential Binary Proxy Execution Via VSDiagnostics.EXE
+- Potential Browser Data Stealing
+- Potential COM Objects Download Cradles Usage - PS Script
+- Potential COM Objects Download Cradles Usage - Process Creation
+- Potential ClickFix Execution Pattern - Registry
+- Potential CobaltStrike Process Patterns
+- Potential CobaltStrike Service Installations - Registry
+- Potential Command Line Path Traversal Evasion Attempt
+- Potential CommandLine Obfuscation Using Unicode Characters From Suspicious Image
+- Potential Commandline Obfuscation Using Escape Characters
+- Potential Configuration And Service Reconnaissance Via Reg.EXE
+- Potential Credential Dumping Attempt Using New NetworkProvider - CLI
+- Potential Credential Dumping Attempt Via PowerShell Remote Thread
+- Potential Credential Dumping Via LSASS Process Clone
+- Potential Credential Dumping Via LSASS SilentProcessExit Technique
+- Potential Crypto Mining Activity
+- Potential DCOM InternetExplorer.Application DLL Hijack
+- Potential DCOM InternetExplorer.Application DLL Hijack - Image Load
+- Potential DLL File Download Via PowerShell Invoke-WebRequest
+- Potential DLL Injection Via AccCheckConsole
+- Potential DLL Sideloading Via DeviceEnroller.EXE
+- Potential DLL Sideloading Via comctl32.dll
+- Potential Data Stealing Via Chromium Headless Debugging
+- Potential Defense Evasion Activity Via Emoji Usage In CommandLine - 1
+- Potential Defense Evasion Activity Via Emoji Usage In CommandLine - 2
+- Potential Defense Evasion Activity Via Emoji Usage In CommandLine - 3
+- Potential Defense Evasion Activity Via Emoji Usage In CommandLine - 4
+- Potential Defense Evasion Via Right-to-Left Override
+- Potential Discovery Activity Via Dnscmd.EXE
+- Potential Dosfuscation Activity
+- Potential Dropper Script Execution Via WScript/CScript/MSHTA
+- Potential EventLog File Location Tampering
+- Potential Excel.EXE DCOM Lateral Movement Via ActivateMicrosoftApp
+- Potential Execution of Sysinternals Tools
+- Potential File Extension Spoofing Using Right-to-Left Override
+- Potential File Overwrite Via Sysinternals SDelete
+- Potential Hidden Directory Creation Via NTFS INDEX_ALLOCATION Stream
+- Potential Hidden Directory Creation Via NTFS INDEX_ALLOCATION Stream - CLI
+- Potential Homoglyph Attack Using Lookalike Characters
+- Potential Homoglyph Attack Using Lookalike Characters in Filename
+- Potential In-Memory Execution Using Reflection.Assembly
+- Potential Invoke-Mimikatz PowerShell Script
+- Potential Kerberos Coercion by Spoofing SPNs via DNS Manipulation
+- Potential Keylogger Activity
+- Potential LSASS Process Dump Via Procdump
+- Potential LethalHTA Technique Execution
+- Potential MSTSC Shadowing Activity
+- Potential Malicious AppX Package Installation Attempts
+- Potential Memory Dumping Activity Via LiveKD
+- Potential Mfdetours.DLL Sideloading
+- Potential Mftrace.EXE Abuse
+- Potential Network Sniffing Activity Using Network Tools
+- Potential Obfuscated Ordinal Call Via Rundll32
+- Potential Packet Capture Activity Via Start-NetEventSession - ScriptBlock
+- Potential Password Spraying Attempt Using Dsacls.EXE
+- Potential Persistence Attempt Via ErrorHandler.Cmd
+- Potential Persistence Attempt Via Existing Service Tampering
+- Potential Persistence Attempt Via Run Keys Using Reg.EXE
+- Potential Persistence Using DebugPath
+- Potential Persistence Via App Paths Default Property
+- Potential Persistence Via AppCompat RegisterAppRestart Layer
+- Potential Persistence Via AutodialDLL
+- Potential Persistence Via CHM Helper DLL
+- Potential Persistence Via DLLPathOverride
+- Potential Persistence Via Excel Add-in - Registry
+- Potential Persistence Via GlobalFlags
+- Potential Persistence Via LSA Extensions
+- Potential Persistence Via Logon Scripts - CommandLine
+- Potential Persistence Via Logon Scripts - Registry
+- Potential Persistence Via Microsoft Compatibility Appraiser
+- Potential Persistence Via Microsoft Office Add-In
+- Potential Persistence Via Mpnotify
+- Potential Persistence Via MyComputer Registry Keys
+- Potential Persistence Via Netsh Helper DLL
+- Potential Persistence Via Outlook Form
+- Potential Persistence Via Outlook Home Page
+- Potential Persistence Via Outlook LoadMacroProviderOnBoot Setting
+- Potential Persistence Via PowerShell User Profile Using Add-Content
+- Potential Persistence Via Powershell Search Order Hijacking - Task
+- Potential Persistence Via Scrobj.dll COM Hijacking
+- Potential Persistence Via Security Descriptors - ScriptBlock
+- Potential Persistence Via Shim Database In Uncommon Location
+- Potential Persistence Via VMwareToolBoxCmd.EXE VM State Change Script
+- Potential PowerShell Console History Access Attempt via History File
+- Potential PowerShell Downgrade Attack
+- Potential PowerShell Execution Policy Tampering
+- Potential PowerShell Execution Policy Tampering - ProcCreation
+- Potential PowerShell Execution Via DLL
+- Potential PowerShell Obfuscation Using Character Join
+- Potential PowerShell Obfuscation Via WCHAR/CHAR
+- Potential Powershell ReverseShell Connection
+- Potential Privilege Escalation Attempt Via .Exe.Local Technique
+- Potential Privilege Escalation To LOCAL SYSTEM
+- Potential Privilege Escalation Using Symlink Between Osk and Cmd
+- Potential Privilege Escalation via Service Permissions Weakness
+- Potential Process Execution Proxy Via CL_Invocation.ps1
+- Potential Process Injection Via Msra.EXE
+- Potential Product Class Reconnaissance Via Wmic.EXE
+- Potential Provisioning Registry Key Abuse For Binary Proxy Execution
+- Potential Provisioning Registry Key Abuse For Binary Proxy Execution - REG
+- Potential Qakbot Registry Activity
+- Potential RDP Session Hijacking Activity
+- Potential RDP Tunneling Via Plink
+- Potential RDP Tunneling Via SSH
+- Potential Ransomware Activity Using LegalNotice Message
+- Potential Ransomware or Unauthorized MBR Tampering Via Bcdedit.EXE
+- Potential Recon Activity Using DriverQuery.EXE
+- Potential Recon Activity Via Nltest.EXE
+- Potential Reconnaissance Activity Via GatherNetworkInfo.VBS
+- Potential Reconnaissance For Cached Credentials Via Cmdkey.EXE
+- Potential ReflectDebugger Content Execution Via WerFault.EXE
+- Potential Register_App.Vbs LOLScript Abuse
+- Potential Registry Persistence Attempt Via Windows Telemetry
+- Potential Regsvr32 Commandline Flag Anomaly
+- Potential Remote Desktop Connection to Non-Domain Host
+- Potential Remote Desktop Tunneling
+- Potential Remote SquiblyTwo Technique Execution
+- Potential RemoteFXvGPUDisablement.EXE Abuse
+- Potential RemoteFXvGPUDisablement.EXE Abuse - PowerShell Module
+- Potential RemoteFXvGPUDisablement.EXE Abuse - PowerShell ScriptBlock
+- Potential RipZip Attack on Startup Folder
+- Potential RjvPlatform.DLL Sideloading From Default Location
+- Potential SAM Database Dump
+- Potential SMB Relay Attack Tool Execution
+- Potential SPN Enumeration Via Setspn.EXE
+- Potential Script Proxy Execution Via CL_Mutexverifiers.ps1
+- Potential Secure Deletion with SDelete
+- Potential ShellDispatch.DLL Functionality Abuse
+- Potential ShellDispatch.DLL Sideloading
+- Potential Signing Bypass Via Windows Developer Features
+- Potential Signing Bypass Via Windows Developer Features - Registry
+- Potential Startup Shortcut Persistence Via PowerShell.EXE
+- Potential Suspicious PowerShell Keywords
+- Potential Suspicious PowerShell Module File Created
+- Potential Suspicious Registry File Imported Via Reg.EXE
+- Potential Suspicious Windows Feature Enabled
+- Potential Suspicious Windows Feature Enabled - ProcCreation
+- Potential Suspicious Winget Package Installation
+- Potential SysInternals ProcDump Evasion
+- Potential UAC Bypass Via Sdclt.EXE
+- Potential Unconstrained Delegation Discovery Via Get-ADComputer - ScriptBlock
+- Potential Unquoted Service Path Reconnaissance Via Wmic.EXE
+- Potential WMI Lateral Movement WmiPrvSE Spawned PowerShell
+- Potential WerFault ReflectDebugger Registry Value Abuse
+- Potential WinAPI Calls Via PowerShell Scripts
+- Potential Winnti Dropper Activity
+- Potentially Over Permissive Permissions Granted Using Dsacls.EXE
+- Potentially Suspicious ASP.NET Compilation Via AspNetCompiler
+- Potentially Suspicious Call To Win32_NTEventlogFile Class
+- Potentially Suspicious Call To Win32_NTEventlogFile Class - PSScript
+- Potentially Suspicious Child Process Of ClickOnce Application
+- Potentially Suspicious Child Process Of DiskShadow.EXE
+- Potentially Suspicious Child Process Of WinRAR.EXE
+- Potentially Suspicious Child Process of KeyScrambler.exe
+- Potentially Suspicious Child Processes Spawned by ConHost
+- Potentially Suspicious Command Executed Via Run Dialog Box - Registry
+- Potentially Suspicious DMP/HDMP File Creation
+- Potentially Suspicious Electron Application CommandLine
+- Potentially Suspicious Execution From Parent Process In Public Folder
+- Potentially Suspicious Execution Of PDQDeployRunner
+- Potentially Suspicious Execution Of Regasm/Regsvcs From Uncommon Location
+- Potentially Suspicious Execution Of Regasm/Regsvcs With Uncommon Extension
+- Potentially Suspicious File Creation by OpenEDR's ITSMService
+- Potentially Suspicious File Download From File Sharing Domain Via PowerShell.EXE
+- Potentially Suspicious File Download From ZIP TLD
+- Potentially Suspicious Inline JavaScript Execution via NodeJS Binary
+- Potentially Suspicious JWT Token Search Via CLI
+- Potentially Suspicious NTFS Symlink Behavior Modification
+- Potentially Suspicious ODBC Driver Registered
+- Potentially Suspicious Ping/Copy Command Combination
+- Potentially Suspicious Regsvr32 HTTP IP Pattern
+- Potentially Suspicious Regsvr32 HTTP/FTP Pattern
+- Potentially Suspicious Self Extraction Directive File Created
+- Potentially Suspicious Usage Of Qemu
+- Potentially Suspicious WebDAV LNK Execution
+- PowerShell ADRecon Execution
+- PowerShell Base64 Encoded Invoke Keyword
+- PowerShell Base64 Encoded Reflective Assembly Load
+- PowerShell Called from an Executable Version Mismatch
+- PowerShell Command Line Contains AMSI Bypass String
+- PowerShell Console History Logs Deleted
+- PowerShell Core DLL Loaded Via Office Application
+- PowerShell Create Local User
+- PowerShell Credential Prompt
+- PowerShell Decompress Commands
+- PowerShell Defender Threat Severity Default Action Set to 'Allow' or 'NoAction'
+- PowerShell Deleted Mounted Share
+- PowerShell Downgrade Attack - PowerShell
+- PowerShell Download Pattern
+- PowerShell Download Via Net.WebClient - PowerShell Classic
+- PowerShell Download and Execution Cradles
+- PowerShell Get Clipboard
+- PowerShell Get-Clipboard Cmdlet Via CLI
+- PowerShell Get-Process LSASS
+- PowerShell Get-Process LSASS in ScriptBlock
+- PowerShell Hotfix Enumeration
+- PowerShell ICMP Exfiltration
+- PowerShell Invoke-Expression On Web Download
+- PowerShell Logging Disabled Via Registry Key Tampering
+- PowerShell Module File Created
+- PowerShell PSAttack
+- PowerShell Profile Modification
+- PowerShell Remote Session Creation
+- PowerShell Run With ExecutionPolicy Bypass
+- PowerShell SAM Copy
+- PowerShell Script Change Permission Via Set-Acl
+- PowerShell Script Change Permission Via Set-Acl - PsScript
+- PowerShell Script Execution Policy Enabled
+- PowerShell Script Run in AppData
+- PowerShell Script With File Hostname Resolving Capabilities
+- PowerShell Script With File Upload Capabilities
+- PowerShell Scripts Installed as Services
+- PowerShell Scripts Installed as Services - Security
+- PowerShell Set-Acl On Windows Folder
+- PowerShell Set-Acl On Windows Folder - PsScript
+- PowerShell ShellCode
+- PowerShell WMI Win32_Product Install MSI
+- PowerShell Web Access Feature Enabled Via DISM
+- PowerShell Write-EventLog Usage
+- PowerShell as a Service in Registry
+- PowerShell with Encoded Command and Bypass Flag
+- PowerView PowerShell Cmdlets - ScriptBlock
+- Powershell Add Name Resolution Policy Table Rule
+- Powershell Create Scheduled Task
+- Powershell DNSExfiltration
+- Powershell Defender Exclusion
+- Powershell Detect Virtualization Environment
+- Powershell Directory Enumeration
+- Powershell Execute Batch Script
+- Powershell Executed From Headless ConHost Process
+- Powershell Inline Execution From A File
+- Powershell Keylogging
+- Powershell Local Email Collection
+- Powershell LocalAccount Manipulation
+- Powershell MsXml COM Object
+- Powershell Sensitive File Discovery
+- Powershell Store File In Alternate Data Stream
+- Powershell Suspicious Win32_PnPEntity
+- Powershell Timestomp
+- Powershell WMI Persistence
+- Powershell XML Execute Command
+- Previously Installed IIS Module Was Removed
+- Print Monitor DLL Installed
+- PrintBrm ZIP Creation of Extraction
+- Private Keys Reconnaissance Via CommandLine Tools
+- ProcDump Used Against lsass.exe
+- Procdump Execution
+- Process Created via WMI by Non-Admin Tool
+- Process Executed From /proc/self/fd Anonymous Inode
+- Process Hollowing Marker (CreateProcess Suspended + Unmapped)
+- Process Initiated Network Connection To Ngrok Domain
+- Process Launched Without Image Name
+- Process Memory Dump Via Dotnet-Dump
+- Process Memory Dump via RdrLeakDiag.EXE
+- Process Tapping macOS Keyboard Events
+- ProcessHacker Privilege Elevation
+- Processes Accessing the Microphone and Webcam
+- Production Container Pulled From Public Registry
+- Program Executed Using Proxy/Local Command Via SSH.EXE
+- Protected Storage Service Access
+- Proxy Execution via Vshadow
+- PsExec Service Child Process Execution as LOCAL SYSTEM
+- PsExec Service Execution
+- PsExec Service File Creation
+- PsExec Service Installation
+- PsExec Tool Execution From Suspicious Locations - PipeName
+- PsExec.exe Service Created On Host
+- PsExec/PAExec Escalation to LOCAL SYSTEM
+- Psexec Execution
+- Publisher Attachment File Dropped In Suspicious Location
+- Pubprn.vbs Proxy Execution
+- Python Function Execution Security Warning Disabled In Excel
+- Python Function Execution Security Warning Disabled In Excel - Registry
+- Python One-Liners with Base64 Decoding
+- Query Tor Onion Address - DNS Client
+- Query Usage To Exfil Data
+- QuickAssist Execution
+- RDP Client Saw Certificate Mismatch
+- RDP Connection Allowed Via Netsh.EXE
+- RDP Enable or Disable via Win32_TerminalServiceSetting WMI Class
+- RDP Login from Localhost
+- RDP Port Forwarding Rule Added Via Netsh.EXE
+- RDP Sensitive Settings Changed to Zero
+- RDP to HTTP or HTTPS Target Ports
+- REGISTER_APP.VBS Proxy Execution
+- RTCore Suspicious Service Installation
+- Raccine Uninstall
+- Rar Usage with Password and Compression Level
+- Rclone Config File Creation
+- Read Contents From Stdin Via Cmd.EXE
+- Rebuild Performance Counter Values Via Lodctr.EXE
+- Recon Command Output Piped To Findstr.EXE
+- Recon Information for Export with Command Prompt
+- Recon Information for Export with PowerShell
+- Reconnaissance Activity
+- RedMimicry Winnti Playbook Registry Manipulation
+- Reg Add Suspicious Paths
+- RegAsm.EXE Execution Without CommandLine Flags or Files
+- Regedit as Trusted Installer
+- Register new Logon Process by Rubeus
+- Registry Disable System Restore
+- Registry Entries For Azorult Malware
+- Registry Explorer Policy Modification
+- Registry Export of Third-Party Credentials
+- Registry Hide Function from User
+- Registry Manipulation via WMI Stdregprov
+- Registry Modification Attempt Via VBScript
+- Registry Modification Attempt Via VBScript - PowerShell
+- Registry Modification for OCI DLL Redirection
+- Registry Modification of MS-settings Protocol Handler
+- Registry Modification to Hidden File Extension
+- Registry Persistence Mechanisms in Recycle Bin
+- Registry Persistence via Explorer Run Key
+- Registry Run Key Points To Temp Path
+- Registry RunOnceEx Key Modified
+- Registry-Free Process Scope COR_PROFILER
+- Regsvr32 DLL Execution With Suspicious File Extension
+- Regsvr32 Execution From Potential Suspicious Location
+- RemCom Service File Creation
+- RemCom Service Installation
+- Remote Access Tool - AnyDesk Execution
+- Remote Access Tool - AnyDesk Incoming Connection
+- Remote Access Tool - AnyDesk Piped Password Via CLI
+- Remote Access Tool - AnyDesk Silent Installation
+- Remote Access Tool - Anydesk Execution From Suspicious Folder
+- Remote Access Tool - GoToAssist Execution
+- Remote Access Tool - LogMeIn Execution
+- Remote Access Tool - MeshAgent Command Execution via MeshCentral
+- Remote Access Tool - NetSupport Execution
+- Remote Access Tool - Potential MeshAgent Execution - Windows
+- Remote Access Tool - ScreenConnect Command Execution
+- Remote Access Tool - ScreenConnect Execution
+- Remote Access Tool - ScreenConnect File Transfer
+- Remote Access Tool - ScreenConnect Installation Execution
+- Remote Access Tool - ScreenConnect Potential Suspicious Remote Command Execution
+- Remote Access Tool - ScreenConnect Remote Command Execution
+- Remote Access Tool - ScreenConnect Server Web Shell Execution
+- Remote Access Tool - ScreenConnect Temporary File
+- Remote Access Tool - Simple Help Execution
+- Remote Access Tool - TacticalRMM Agent Registration to Potentially Attacker-Controlled Server
+- Remote Access Tool - Team Viewer Session Started On Windows Host
+- Remote Access Tool - UltraViewer Execution
+- Remote Access Tool Services Have Been Installed - Security
+- Remote Access Tool Services Have Been Installed - System
+- Remote AppX Package Downloaded from File Sharing or CDN Domain
+- Remote CHM File Download/Execution Via HH.EXE
+- Remote Code Execute via Winrm.vbs
+- Remote DLL Load Via Rundll32.EXE
+- Remote File Download Via Desktopimgdownldr Utility
+- Remote Management Tool Installed Outside Allowlist
+- Remote PowerShell Session (PS Classic)
+- Remote PowerShell Session (PS Module)
+- Remote PowerShell Session Host Process (WinRM)
+- Remote PowerShell Sessions Network Connections (WinRM)
+- Remote Service Activity via SVCCTL Named Pipe
+- Remote Task Creation via ATSVC Named Pipe
+- Remote Thread Created In KeePass.EXE
+- Remote Thread Creation In Mstsc.Exe From Suspicious Location
+- Remote Thread Creation Ttdinject.exe Proxy
+- Remote Thread Creation Via PowerShell In Uncommon Target
+- Remote Utilities Host Service Install
+- Remote XSL Execution Via Msxsl.EXE
+- RemoteFXvGPUDisablement Abuse Via AtomicTestHarnesses
+- Remotely Hosted HTA File Executed Via Mshta.EXE
+- Removal Of Index Value to Hide Schedule Task - Registry
+- Removal Of SD Value to Hide Schedule Task - Registry
+- Remove Account From Domain Admin Group
+- Renamed CURL.EXE Execution
+- Replace Desktop Wallpaper by Powershell
+- Replace.exe Usage
+- Replay Attack Detected
+- Response File Execution Via Odbcconf.EXE
+- Restricted Software Access By SRP
+- RestrictedAdminMode Registry Value Tampering
+- RestrictedAdminMode Registry Value Tampering - ProcCreation
+- Reverse Shell Pattern from /bin/bash
+- RoleBinding Created Bound To cluster-admin ClusterRole
+- Root Certificate Installed - PowerShell
+- Root Certificate Installed From Susp Locations
+- RottenPotato Like Attack Pattern
+- Ruby Inline Command Execution
+- Run Once Task Execution as Configured in Registry
+- Run PowerShell Script from ADS
+- RunDLL32 Spawning Explorer
+- RunMRU Registry Key Deletion
+- RunMRU Registry Key Deletion - Registry
+- Rundll32 Execution Without CommandLine Parameters
+- Rundll32 Execution Without Parameters
+- Rundll32 InstallScreenSaver Execution
+- Rundll32 Registered COM Objects
+- Running Chrome VPN Extensions via the Registry 2 VPN Extension
+- SAM Registry Hive Handle Request
+- SCCM Client Installed From Untrusted Source
+- SCR File Write Event
+- SELinux Set To Permissive
+- SGID Bit Set On Newly Created Binary
+- SQLite Chromium Profile Data DB Access
+- SQLite Firefox Profile Data DB Access
+- SSH authorized_keys File Modified
+- SUID Bit Set On Newly Created Binary
+- SUID/SGID Binary Created
+- SafeBoot Registry Key Deleted Via Reg.EXE
+- Scheduled Task Created From Office or Browser
+- Scheduled Task Created Pointing to Suspicious Path
+- Scheduled Task Creation Masquerading as System Processes
+- Scheduled Task Creation with Curl and PowerShell Execution Combo
+- Scheduled Task Executed From A Suspicious Location
+- Scheduled Task Executed Uncommon LOLBIN
+- Scheduled Task Executing Encoded Payload from Registry
+- Scheduled Task Runs Encoded PowerShell
+- Schtasks From Suspicious Folders
+- Screen Capture Activity Via Psr.EXE
+- Screen Lock Disabled On Managed Device
+- Screen-Capture Tool Use on Sensitive Workstation
+- ScreenConnect Temporary Installation Artefact
+- ScreenSaver Registry Key Set
+- ScreenSaver Registry Path Set To Custom Binary
+- Script Event Consumer Spawning Process
+- Script Interpreter Spawning Credential Scanner - Windows
+- Scripted Diagnostics Turn Off Check Enabled - Registry
+- Sdclt Child Processes
+- Security Event Logging Disabled via MiniNt Registry Key - Process
+- Security Event Logging Disabled via MiniNt Registry Key - Registry Set
+- Security Eventlog Cleared
+- Security Privileges Enumeration Via Whoami.EXE
+- Security Service Disabled Via Reg.EXE
+- Security Tools Keyword Lookup Via Findstr.EXE
+- Self Extracting Package Creation Via Iexpress.EXE From Potentially Suspicious Location
+- Self Extraction Directive File Created In Potentially Suspicious Location
+- Sensitive File Dump Via Print.EXE
+- Sensitive File Dump Via Wbadmin.EXE
+- Sensitive File Recovery From Backup Via Wbadmin.EXE
+- Service DACL Abuse To Hide Services Via Sc.EXE
+- Service Installed By Unusual Client - Security
+- Service Installed By Unusual Client - System
+- Service Registry Key Deleted Via Reg.EXE
+- Service Registry Key Read Access Request
+- Service Registry Permissions Weakness Check
+- Service Security Descriptor Tampering Via Sc.EXE
+- Service Started/Stopped Via Wmic.EXE
+- Service Startup Type Change Via Wmic.EXE
+- Service StartupType Change Via PowerShell Set-Service
+- Service StartupType Change Via Sc.EXE
+- Shadow Copies Creation Using Operating Systems Utilities
+- Shadow Copies Deletion Using Operating Systems Utilities
+- Share And Session Enumeration Using Net.EXE
+- SharpHound Collection Run Detected
+- Shell Process Spawned by Java.EXE
+- Shell Spawned by Web Server Process
+- Shell32 DLL Execution in Suspicious Directory
+- ShimCache Flush
+- Silence.EDA Detection
+- Start Windows Service Via Net.EXE
+- Start of NT Virtual DOS Machine
+- Startup Folder Written By Non-Installer Process
+- Startup/Logon Script Added to Group Policy Object
+- Sticky Key Like Backdoor Execution
+- Sticky Key Like Backdoor Usage - Registry
+- Stop Windows Service Via Net.EXE
+- Stop Windows Service Via PowerShell Stop-Service
+- Stop Windows Service Via Sc.EXE
+- Successful Account Login Via WMI
+- Successful Overpass the Hash Attempt
+- Sudoers File Granted NOPASSWD Privilege
+- Suspicious ASPX File Drop by Exchange
+- Suspicious Access to Sensitive File Extensions
+- Suspicious Active Directory Database Snapshot Via ADExplorer
+- Suspicious AddinUtil.EXE CommandLine Execution
+- Suspicious Advpack Call Via Rundll32.EXE
+- Suspicious AppleScript Execution via osascript
+- Suspicious Application Allowed Through Exploit Guard
+- Suspicious Application Installed
+- Suspicious Autorun Registry Modified via WMI
+- Suspicious Binaries and Scripts in Public Folder
+- Suspicious BitLocker Access Agent Update Utility Execution
+- Suspicious Cabinet File Execution Via Msdt.EXE
+- Suspicious Calculator Usage
+- Suspicious Camera and Microphone Access
+- Suspicious CertReq Command to Download
+- Suspicious Child Process Of BgInfo.EXE
+- Suspicious Child Process of AspNetCompiler
+- Suspicious Chromium Browser Instance Executed With Custom Extension
+- Suspicious ClickFix/FileFix Execution Pattern
+- Suspicious Cobalt Strike DNS Beaconing - Sysmon
+- Suspicious CodePage Switch Via CHCP
+- Suspicious Command Patterns In Scheduled Task Creation
+- Suspicious Computer Machine Password by PowerShell
+- Suspicious Connection to Remote Account
+- Suspicious Control Panel DLL Load
+- Suspicious CreateRemoteThread Into explorer.exe
+- Suspicious Csi.exe Usage
+- Suspicious DLL Loaded via CertOC.EXE
+- Suspicious DNS Query Indicating Kerberos Coercion via DNS Object SPN Spoofing
+- Suspicious Debugger Registration Cmdline
+- Suspicious Deno File Written from Remote Source
+- Suspicious Desktopimgdownldr Command
+- Suspicious Desktopimgdownldr Target File
+- Suspicious Digital Signature Of AppX Package
+- Suspicious Double Extension File Execution
+- Suspicious Download From File-Sharing Website Via Bitsadmin
+- Suspicious Download Via Certutil.EXE
+- Suspicious Download from Office Domain
+- Suspicious Driver Install by pnputil.exe
+- Suspicious Dropbox API Usage
+- Suspicious DumpMinitool Execution
+- Suspicious Encoded And Obfuscated Reflection Assembly Load Function Call
+- Suspicious Environment Variable Has Been Registered
+- Suspicious Eventlog Clear
+- Suspicious Executable File Creation
+- Suspicious Execution From Outlook Temporary Folder
+- Suspicious Execution of Hostname
+- Suspicious Execution of InstallUtil Without Log
+- Suspicious Execution of Powershell with Base64
+- Suspicious Execution of Shutdown
+- Suspicious Execution of Shutdown to Log Out
+- Suspicious Execution of Systeminfo
+- Suspicious Explorer Process with Whitespace Padding - ClickFix/FileFix
+- Suspicious Extrac32 Execution
+- Suspicious File Characteristics Due to Missing Fields
+- Suspicious File Created In PerfLogs
+- Suspicious File Created Via OneNote Application
+- Suspicious File Created by ArcSOC.exe
+- Suspicious File Created in Outlook Temporary Directory
+- Suspicious File Creation Activity From Fake Recycle.Bin Folder
+- Suspicious File Download From File Sharing Domain Via Curl.EXE
+- Suspicious File Download From File Sharing Websites -  File Stream
+- Suspicious File Downloaded From File-Sharing Website Via Certutil.EXE
+- Suspicious File Drop by Exchange
+- Suspicious File Encoded To Base64 Via Certutil.EXE
+- Suspicious File Execution From Internet Hosted WebDav Share
+- Suspicious File Write to SharePoint Layouts Directory
+- Suspicious File Write to Webapps Root Directory
+- Suspicious Files in Default GPO Folder
+- Suspicious FromBase64String Usage On Gzip Archive - Process Creation
+- Suspicious FromBase64String Usage On Gzip Archive - Ps Script
+- Suspicious GPO Discovery With Get-GPO
+- Suspicious Get Information for SMB Share
+- Suspicious Get Information for SMB Share - PowerShell Module
+- Suspicious Get Local Groups Information
+- Suspicious Get Local Groups Information - PowerShell
+- Suspicious Get-ADDBAccount Usage
+- Suspicious Get-ADReplAccount
+- Suspicious Get-Variable.exe Creation
+- Suspicious GetTypeFromCLSID ShellExecute
+- Suspicious Git Clone
+- Suspicious Group And Account Reconnaissance Activity Using Net.EXE
+- Suspicious GrpConv Execution
+- Suspicious HH.EXE Execution
+- Suspicious HWP Sub Processes
+- Suspicious High IntegrityLevel Conhost Legacy Option
+- Suspicious Hyper-V Cmdlets
+- Suspicious IIS URL GlobalRules Rewrite Via AppCmd
+- Suspicious Interactive PowerShell as SYSTEM
+- Suspicious Invoke-Item From Mount-DiskImage
+- Suspicious Invoke-WebRequest Execution
+- Suspicious Invoke-WebRequest Execution With DirectIP
+- Suspicious JavaScript Execution Via Mshta.EXE
+- Suspicious Kerberos Ticket Request via CLI
+- Suspicious Kerberos Ticket Request via PowerShell Script - ScriptBlock
+- Suspicious Kernel Dump Using Dtrace
+- Suspicious Key Manager Access
+- Suspicious Keyboard Layout Load
+- Suspicious LDAP-Attributes Used
+- Suspicious LLMNR Reply Pattern (Responder-Like)
+- Suspicious LSASS Access Via MalSecLogon
+- Suspicious Loading of Dbgcore/Dbghelp DLLs from Uncommon Location
+- Suspicious MSDT Parent Process
+- Suspicious MSExchangeMailboxReplication ASPX Write
+- Suspicious MSHTA Child Process
+- Suspicious Manipulation Of Default Accounts Via Net.EXE
+- Suspicious Modification Of Scheduled Tasks
+- Suspicious Mount-DiskImage
+- Suspicious Msiexec Execute Arbitrary DLL
+- Suspicious Mstsc.EXE Execution With Local RDP File
+- Suspicious NTLM Authentication on the Printer Spooler Service
+- Suspicious New Service Creation
+- Suspicious Obfuscated PowerShell Code
+- Suspicious Outlook Child Process
+- Suspicious PROCEXP152.sys File Created In TMP
+- Suspicious Parent Double Extension File Execution
+- Suspicious Persistence Via VMwareToolBoxCmd.EXE VM State Change Script
+- Suspicious Ping/Del Command Combination
+- Suspicious Plink Port Forwarding
+- Suspicious PlistBuddy LaunchAgent Modification
+- Suspicious PowerShell Download - PoshModule
+- Suspicious PowerShell Download - Powershell Script
+- Suspicious PowerShell Download and Execute Pattern
+- Suspicious PowerShell Get Current User
+- Suspicious PowerShell IEX Execution Patterns
+- Suspicious PowerShell In Registry Run Keys
+- Suspicious PowerShell Invocation From Script Engines
+- Suspicious PowerShell Invocations - Generic
+- Suspicious PowerShell Invocations - Generic - PowerShell Module
+- Suspicious PowerShell Invocations - Specific
+- Suspicious PowerShell Invocations - Specific - PowerShell Module
+- Suspicious PowerShell Invocations - Specific - ProcessCreation
+- Suspicious PowerShell Parameter Substring
+- Suspicious PowerShell Parent Process
+- Suspicious PowerShell WindowStyle Option
+- Suspicious Powercfg Execution To Change Lock Screen Timeout
+- Suspicious Printer Driver Empty Manufacturer
+- Suspicious Process Access of MsMpEng by WerFaultSecure - EDR-Freeze
+- Suspicious Process Access to LSASS with Dbgcore/Dbghelp DLLs
+- Suspicious Process Created Via Wmic.EXE
+- Suspicious Process Discovery With Get-Process
+- Suspicious Process Execution From Fake Recycle.Bin Folder
+- Suspicious Process Patterns NTDS.DIT Exfil
+- Suspicious Process Start Locations
+- Suspicious Processes Spawned by Java.EXE
+- Suspicious Processes Spawned by WinRM
+- Suspicious Program Location Whitelisted In Firewall Via Netsh.EXE
+- Suspicious Program Names
+- Suspicious Provlaunch.EXE Child Process
+- Suspicious Query of MachineGUID
+- Suspicious RASdial Activity
+- Suspicious RDP Redirect Using TSCON
+- Suspicious Reconnaissance Activity Using Get-LocalGroupMember Cmdlet
+- Suspicious Recursive Takeown
+- Suspicious Reg Add BitLocker
+- Suspicious Rejected SMB Guest Logon From IP
+- Suspicious Remote Child Process From Outlook
+- Suspicious Run Key from Download
+- Suspicious RunAs-Like Flag Combination
+- Suspicious Rundll32 Activity Invoking Sys File
+- Suspicious Rundll32 Execution With Image Extension
+- Suspicious Rundll32 Invoking Inline VBScript
+- Suspicious Rundll32 Setupapi.dll Activity
+- Suspicious Runscripthelper.exe
+- Suspicious SSL Connection
+- Suspicious SYSVOL Domain Group Policy Access
+- Suspicious Scan Loop Network
+- Suspicious Scheduled Task Creation
+- Suspicious Scheduled Task Creation Involving Temp Folder
+- Suspicious Scheduled Task Name As GUID
+- Suspicious Scheduled Task Update
+- Suspicious Scheduled Task Write to System32 Tasks
+- Suspicious Schtasks Schedule Type With High Privileges
+- Suspicious Scripting in a WMI Consumer
+- Suspicious Serv-U Process Pattern
+- Suspicious Service Binary Directory
+- Suspicious Service DACL Modification Via Set-Service Cmdlet
+- Suspicious Service DACL Modification Via Set-Service Cmdlet - PS
+- Suspicious Service Installation
+- Suspicious Service Installation Script
+- Suspicious Service Path Modification
+- Suspicious Shell Open Command Registry Modification
+- Suspicious Shells Spawn by Java Utility Keytool
+- Suspicious Shim Database Patching Activity
+- Suspicious Space Characters in RunMRU Registry Path - ClickFix
+- Suspicious Space Characters in TypedPaths Registry Path - FileFix
+- Suspicious Speech Runtime Binary Child Process
+- Suspicious Splwow64 Without Params
+- Suspicious Spool Service Child Process
+- Suspicious Start-Process PassThru
+- Suspicious Startup Folder Persistence
+- Suspicious SysAidServer Child
+- Suspicious TCP Tunnel Via PowerShell Script
+- Suspicious TSCON Start as SYSTEM
+- Suspicious Teams Application Related ObjectAcess Event
+- Suspicious UltraVNC Execution
+- Suspicious Unblock-File
+- Suspicious Uninstall of Windows Defender Feature via PowerShell
+- Suspicious Unsigned Dbghelp/Dbgcore DLL Loaded
+- Suspicious Usage Of Active Directory Diagnostic Tool (ntdsutil.exe)
+- Suspicious Usage Of ShellExec_RunDLL
+- Suspicious Usage of For Loop with Recursive Directory Search in CMD
+- Suspicious Use of CSharp Interactive Console
+- Suspicious Use of PsLogList
+- Suspicious VBoxDrvInst.exe Parameters
+- Suspicious Vsls-Agent Command With AgentExtensionPath Load
+- Suspicious WMIC Execution Via Office Process
+- Suspicious Where Execution
+- Suspicious Windows ANONYMOUS LOGON Local Account Created
+- Suspicious Windows Defender Folder Exclusion Added Via Reg.EXE
+- Suspicious Windows Service Tampering
+- Suspicious Windows Trace ETW Session Tamper Via Logman.EXE
+- Suspicious Windows Update Agent Empty Cmdline
+- Suspicious Workstation Locking via Rundll32
+- Suspicious X509Enrollment - Process Creation
+- Suspicious X509Enrollment - Ps Script
+- Suspicious XOR Encoded PowerShell Command
+- Suspicious ZipExec Execution
+- SyncAppvPublishingServer Bypass Powershell Restriction - PS Module
+- SyncAppvPublishingServer Execute Arbitrary PowerShell Code
+- SyncAppvPublishingServer Execution to Bypass Powershell Restriction
+- SyncAppvPublishingServer VBS Execute Arbitrary PowerShell Code
+- SysKey Registry Keys Access
+- Sysinternals PsService Execution
+- Sysinternals PsSuspend Execution
+- Sysinternals PsSuspend Suspicious Execution
+- Sysinternals Tools AppX Versions Execution
+- Sysmon Application Crashed
+- Sysmon Blocked Executable
+- Sysmon Blocked File Shredding
+- Sysmon Channel Reference Deletion
+- Sysmon Configuration Change
+- Sysmon Configuration Changed
+- Sysmon Configuration Error
+- Sysmon Configuration Update
+- Sysmon Discovery Via Default Driver Altitude Using Findstr.EXE
+- Sysmon Driver Altitude Change
+- Sysmon Driver Unloaded Via Fltmc.EXE
+- Sysmon File Executable Creation Detected
+- Sysprep on AppData Folder
+- System Disk And Volume Reconnaissance Via Wmic.EXE
+- System Language Discovery via Reg.Exe
+- System Network Connections Discovery Via Net.EXE
+- System Restore Registry Modification via CommandLine
+- SystemExtension Loaded From Non-Apple Bundle
+- Systemd Timer Unit Created
+- Systemd Unit File Written By Non-Package Process
+- TCC Database Modified Outside tccd
+- TacticalRMM Service Installation
+- Tamper Windows Defender - ScriptBlockLogging
+- Tamper Windows Defender Remove-MpPreference
+- Tamper Windows Defender Remove-MpPreference - ScriptBlockLogging
+- Tamper With Sophos AV Registry Keys
+- Tap Driver Installation
+- Tap Driver Installation - Security
+- Tap Installer Execution
+- Taskkill Symantec Endpoint Protection
+- Taskmgr as LOCAL_SYSTEM
+- Tasks Folder Evasion
+- TeamViewer Domain Query By Non-TeamViewer Application
+- TeamViewer Remote Session
+- Terminal Server Client Connection History Cleared - Registry
+- Testing Usage of Uncommonly Used Port
+- The Windows Defender Firewall Service Failed To Load Group Policy
+- Time Travel Debugging Utility Usage
+- Time Travel Debugging Utility Usage - Image
+- Tomcat WebServer Logs Deleted
+- Tor Client/Browser Execution
+- Transferring Files with Credential Data via Network Shares
+- Troubleshooting Pack Cmdlet Execution
+- Trust Access Disable For VBApplications
+- Trusted Path Bypass via Windows Directory Spoofing
+- TrustedPath UAC Bypass Pattern
+- UAC Bypass Abusing Winsat Path Parsing - File
+- UAC Bypass Abusing Winsat Path Parsing - Process
+- UAC Bypass Abusing Winsat Path Parsing - Registry
+- UAC Bypass Tools Using ComputerDefaults
+- UAC Bypass Using .NET Code Profiler on MMC
+- UAC Bypass Using ChangePK and SLUI
+- UAC Bypass Using Consent and Comctl32 - File
+- UAC Bypass Using Consent and Comctl32 - Process
+- UAC Bypass Using Disk Cleanup
+- UAC Bypass Using DismHost
+- UAC Bypass Using Event Viewer RecentViews
+- UAC Bypass Using IDiagnostic Profile
+- UAC Bypass Using IDiagnostic Profile - File
+- UAC Bypass Using IEInstal - File
+- UAC Bypass Using IEInstal - Process
+- UAC Bypass Using Iscsicpl - ImageLoad
+- UAC Bypass Using MSConfig Token Modification - File
+- UAC Bypass Using MSConfig Token Modification - Process
+- UAC Bypass Using NTFS Reparse Point - File
+- UAC Bypass Using NTFS Reparse Point - Process
+- UAC Bypass Using PkgMgr and DISM
+- UAC Bypass Using WOW64 Logger DLL Hijack
+- UAC Bypass Using Windows Media Player - File
+- UAC Bypass Using Windows Media Player - Registry
+- UAC Bypass Via Wsreset
+- UAC Bypass Via eventvwr.exe
+- UAC Bypass Via fodhelper.exe
+- UAC Bypass Via sdclt.exe
+- UAC Bypass WSReset
+- UAC Bypass via Event Viewer
+- UAC Disabled
+- UAC Notification Disabled
+- UAC Secure Desktop Prompt Disabled
+- UEFI Persistence Via Wpbbin - FileCreation
+- UEFI Persistence Via Wpbbin - ProcessCreation
+- UPnP/SSDP Beacons From Server Subnet
+- USB Device Plugged
+- USB Mass-Storage Device Attached to Restricted Host
+- Uncommon Child Process Of BgInfo.EXE
+- Uncommon Child Process Of Defaultpack.EXE
+- Uncommon Child Process Spawned By Odbcconf.EXE
+- Uncommon File Creation By Mysql Daemon Process
+- Uncommon FileSystem Load Attempt By Format.com
+- Uncommon Network Connection Initiated By Certutil.EXE
+- Uncommon One Time Only Scheduled Task At 00:00
+- Uncommon Process Access Rights For Target Image
+- Uncommon System Information Discovery Via Wmic.EXE
+- Uninstall Crowdstrike Falcon Sensor
+- Uninstall Sysinternals Sysmon
+- Unix User Added with Login Shell
+- Unmount Share Via Net.EXE
+- Unsigned AppX Installation Attempt Using Add-AppxPackage
+- Unsigned AppX Installation Attempt Using Add-AppxPackage - PsScript
+- Unsigned Binary Loaded From Suspicious Location
+- Unsigned Image Loaded Into LSASS Process
+- Unsigned Module Loaded by ClickOnce Application
+- Untrusted Root Certificate Installed On Device
+- Unusual File Download From File Sharing Websites - File Stream
+- Unusual Parent Process For Cmd.EXE
+- Usage Of Web Request Commands And Cmdlets
+- Use Get-NetTCPConnection
+- Use Get-NetTCPConnection - PowerShell Module
+- Use Of The SFTP.EXE Binary As A LOLBIN
+- Use of FSharp Interpreters
+- Use of Pcalua For Execution
+- Use of Remote.exe
+- Use of Scriptrunner.exe
+- Use of TTDInject.exe
+- Use of UltraVNC Remote Access Software
+- Use of VSIISExeLauncher.exe
+- Use of VisualUiaVerifyNative.exe
+- Use of W32tm as Timer
+- Use of Wfc.exe
+- User Added To Highly Privileged Group
+- User Added to Local Administrators Group
+- User Added to Remote Desktop Users Group
+- User Couldn't Call a Privileged Service 'LsaRegisterLogonProcess'
+- User LaunchAgent Plist Created
+- User Logoff Event
+- User Shell Folders Registry Modification via CommandLine
+- User crontab Created (Rare On macOS)
+- UtilityFunctions.ps1 Proxy Dll
+- VBA DLL Loaded Via Office Application
+- VHD Image Download Via Browser
+- VMMap Signed Dbghelp.DLL Potential Sideloading
+- VPN App Installed On Managed Device
+- VSS Shadow Created Then NTDS.dit Copied
+- VSSAudit Security Event Source Registration
+- ValidatingWebhookConfiguration Modified
+- Veeam Backup Database Suspicious Query
+- Veeam Backup Servers Credential Dumping Script Execution
+- VeeamBackup Database Credentials Dump Via Sqlcmd.EXE
+- Virtualbox Driver Installation or Starting of VMs
+- Visual Basic Command Line Compiler Usage
+- Visual Studio Code Tunnel Execution
+- Visual Studio Code Tunnel Remote File Creation
+- Visual Studio Code Tunnel Service Installation
+- Visual Studio NodejsTools PressAnyKey Arbitrary Binary Execution
+- Volume Shadow Copies Deleted
+- Volume Shadow Copy Mount
+- VolumeShadowCopy Symlink Creation Via Mklink
+- VsCode Powershell Profile Modification
+- Vulnerable Driver Blocklist Registry Tampering Via CommandLine
+- Vulnerable Driver Load
+- Vulnerable Driver Load By Name
+- Vulnerable HackSys Extreme Vulnerable Driver Load
+- Vulnerable Netlogon Secure Channel Connection Allowed
+- Vulnerable WinRing0 Driver Load
+- WCE wceaux.dll Access
+- WINEKEY Registry Modification
+- WMI ActiveScriptEventConsumers Activity Via Scrcons.EXE DLL Load
+- WMI Event Consumer Created Named Pipe
+- WMI Event Subscription
+- WMI Filter-To-Consumer Binding Created
+- WMI Persistence - Command Line Event Consumer
+- WMI Persistence - Script Event Consumer
+- WMI Persistence - Script Event Consumer File Write
+- WMI Persistence - Security
+- WMIC Loading Scripting Libraries
+- WMIC Unquoted Services Path Lookup - PowerShell
+- WMImplant Hack Tool
+- WPAD Probe Reaching External Resolver
+- WSL Kali-Linux Usage
+- WScript or CScript Dropper - File
+- Wab/Wabmig Unusual Parent Or Child Processes
+- Wdigest CredGuard Registry Modification
+- Wdigest Enable UseLogonCredential
+- Weak or Abused Passwords In CLI
+- WebDav Client Execution Via Rundll32.EXE
+- WerFault LSASS Process Memory Dump
+- WhoAmI as Parameter
+- Whoami.EXE Execution From Privileged Process
+- Whoami.EXE Execution With Output Option
+- Win Defender Restored Quarantine File
+- Win Susp Computer Name Containing Samtheadmin
+- WinDivert Driver Load
+- WinRAR Creating Files in Startup Locations
+- WinRM Shell From Workstation To DC
+- Windows AMSI Related Registry Tampering Via CommandLine
+- Windows AppX Deployment Unsigned Package Installation
+- Windows Application Event Log Cleared
+- Windows Credential Editor Registry
+- Windows Credential Guard Disabled - Registry
+- Windows Credential Guard Registry Tampering Via CommandLine
+- Windows Credential Guard Related Registry Value Deleted - Registry
+- Windows Credential Manager Access via VaultCmd
+- Windows Default Domain GPO Modification
+- Windows Default Domain GPO Modification via GPME
+- Windows Defender AMSI Trigger Detected
+- Windows Defender Configuration Changes
+- Windows Defender Context Menu Removed
+- Windows Defender Definition Files Removed
+- Windows Defender Exclusion List Modified
+- Windows Defender Exclusion Registry Key - Write Access Requested
+- Windows Defender Exclusions Added
+- Windows Defender Exclusions Added - PowerShell
+- Windows Defender Exclusions Added - Registry
+- Windows Defender Exploit Guard Tamper
+- Windows Defender Firewall Has Been Reset To Its Default Configuration
+- Windows Defender Grace Period Expired
+- Windows Defender Malware And PUA Scanning Disabled
+- Windows Defender Malware Detection History Deletion
+- Windows Defender Real-time Protection Disabled
+- Windows Defender Service Disabled - Registry
+- Windows Defender Submit Sample Feature Disabled
+- Windows Defender Threat Detected
+- Windows Defender Threat Detection Service Disabled
+- Windows Defender Threat Severity Default Action Modified
+- Windows Defender Virus Scanning Feature Disabled
+- Windows Event Log Cleared
+- Windows Event Log Service Stopped
+- Windows EventLog Autologger Session Registry Modification Via CommandLine
+- Windows Filtering Platform Blocked Connection From EDR Agent Binary
+- Windows Firewall Disabled via PowerShell
+- Windows Firewall Profile Disabled
+- Windows Firewall Settings Have Been Changed
+- Windows Hotfix Updates Reconnaissance Via Wmic.EXE
+- Windows Hypervisor Enforced Code Integrity Disabled
+- Windows Internet Hosted WebDav Share Mount Via Net.EXE
+- Windows Kernel Debugger Execution
+- Windows MSIX Package Support Framework AI_STUBS Execution
+- Windows Network Access Suspicious desktop.ini Action
+- Windows Pcap Drivers
+- Windows Recall Feature Enabled - DisableAIDataAnalysis Value Deleted
+- Windows Recall Feature Enabled - Registry
+- Windows Recovery Environment Disabled Via Reagentc
+- Windows Registry Trust Record Modification
+- Windows Screen Capture with CopyFromScreen
+- Windows Service Created With Suspicious BinaryPath
+- Windows Service Image Path Modified
+- Windows Service Terminated With Error
+- Windows Share Mount Via Net.EXE
+- Windows Shell/Scripting Application File Write to Suspicious Folder
+- Windows System Event Log Cleared
+- Windows Terminal Profile Settings Modification By Uncommon Process
+- Windows Update Error
+- Windows Vulnerable Driver Blocklist Disabled
+- Windows svchost.exe Loaded DLL From User Path
+- Winget Admin Settings Modification
+- Winlogon AllowMultipleTSSessions Enable
+- Winlogon Helper DLL
+- Winlogon Notify Key Logon Persistence
+- Winlogon Userinit Registry Value Modified
+- Winrar Compressing Dump Files
+- Winrs Local Command Execution
+- Wmiprvse Wbemcomn DLL Hijack
+- Wmiprvse Wbemcomn DLL Hijack - File
+- Write Protect For Storage Disabled
+- Writing Of Malicious Files To The Fonts Folder
+- Wscript Shell Run In CommandLine
+- XProtect Updates Disabled
+- Zip A Folder With PowerShell For Staging In Temp - PowerShell
+- Zip A Folder With PowerShell For Staging In Temp - PowerShell Script
+- arp -a Enumeration By Workstation
+- at Job Created
+- auditctl Used To Disable Audit Rules
+- auditd Service Stopped
+- base64 Decoded Then Executed In Shell
+- bcdedit Used To Disable Recovery
+- bitsadmin.exe Downloading File
+- certutil.exe Used To Decode Encoded File
+- certutil.exe Used To Download Remote File
+- chmod +x Applied To File In /tmp
+- cipher.exe /w Used (Secure Delete)
+- cmstp.exe Loaded INF From Suspicious Path
+- codesign --force --deep Used By User
+- com.apple.dock Modified By Non-System Process
+- com.apple.loginitems Modified
+- com.apple.quarantine xattr Stripped
+- comsvcs.dll MiniDump Of lsass
+- cscript.exe Executing Script From Temp
+- csrutil disable (SIP Off)
+- curl Output Piped To Shell
+- curl/wget Piped Directly To Shell
+- dd Writing /dev/zero To Block Device
+- defaults Wrote To com.apple.loginwindow
+- docker build Run On Production Host
+- eBPF Program Loaded By Non-Root
+- execve From /dev/shm
+- format Command Used Against Drive
+- hyperkit Launched From Non-Standard Path
+- iCloud Account Changed On Managed iOS Device
+- iCloud Keychain Sync Toggled Off
+- iOS Jailbreak Detected By MDM
+- icacls Used To Deny Access On System Path
+- iptables -F Used To Flush Rules
+- kextload Of Unsigned Kernel Extension
+- kube-apiserver Started With --anonymous-auth=true
+- kubectl exec Into Production Namespace by Non-Operator
+- launchctl Loading Plist From /tmp
+- mDNS Query For Non-.local Suffix
+- macOS Data Chunking via dd or split
+- macOS Gatekeeper Bypass Attempt
+- macOS Gatekeeper Disabled
+- macOS Hidden File or Directory Created
+- macOS Kernel Extension Loaded via kextload
+- macOS Keychain Dumping Attempt
+- macOS LaunchAgent or LaunchDaemon Plist Created
+- macOS Local User Account Created
+- macOS LoginHook Persistence via defaults write
+- macOS Network Share Discovery via showmount or smbutil
+- macOS Plist Modification via plutil
+- macOS Quarantine Attribute Stripped
+- macOS Suspicious Living-Off-The-Land Binary Execution
+- macOS System Log Removed or Manually Rotated
+- macOS TCC Bypass Pattern (Direct DB Write)
+- memfd_create Then Executed Anonymous Memory Region
+- modprobe Loaded Module From /tmp
+- mshta.exe Executed Inline Script
+- net group "Domain Admins" Enumerated
+- net localgroup administrators Enumerated
+- net view Used To Enumerate File Shares
+- netcat Listening Mode Detected
+- nltest /domain_trusts Enumerated
+- ntdsutil.exe Used To Extract NTDS
+- nvram boot-args Modified
+- osascript Used To Read Keychain
+- osascript do shell script with administrator privileges
+- ptrace Attached To PID 1
+- rclone Binary Run On Non-Backup Host
+- reg save Used Against SAM/SECURITY/SYSTEM
+- regsvr32.exe Used With scrobj.dll (Squiblydoo)
+- route print Run From Workstation
+- rsyslog Configuration File Removed
+- rundll32.exe Loaded DLL From Temp Path
+- rundll32.exe Started Without Arguments
+- rundll32.exe shell32 Control_RunDLL Used Suspiciously
+- screencapture Binary Used
+- security export Used Against Login Keychain
+- security find-generic-password Used
+- setuid Capability Granted To New Binary
+- shred Used Against Production Data Path
+- spctl --master-disable (Gatekeeper Off)
+- sshd_config PermitRootLogin Set To Yes
+- systemd-portable Image Attached
+- systemsetup Enabled Remote Login (SSH)
+- takeown.exe Used Against System Path
+- tar Output Piped To curl Upload
+- tccutil reset All Subsystems
+- ufw Firewall Disabled
+- vaultcmd.exe Listed All Stored Credentials
+- vssadmin Used To Enumerate And Delete Shadow Copies
+- wget Pulling From Newly Registered TLD
+- wmic process call create Used For Remote Execution
+- yum/dnf Added Repo From Untrusted Domain
+- ~/.ssh/authorized_keys Modified
+
+## identity (146 规则)
+
+- ACL On Sensitive AD Object Modified
+- AD Account Set With PASSWD_NOTREQD
+- AD Anonymous Logon Allowed Via Null Session
+- AD Domain Trust Modified
+- AD sIDHistory Attribute Modified
+- AS-REP Roasting (Account with Pre-Auth Disabled)
+- AS-REP Roasting: TGT Without Pre-Auth
+- Active Directory Group Policy Modified
+- Active Directory Replication Request from Non-Domain-Controller
+- Admin Password Reset Initiated by Self via Self-Service
+- Atlassian Org 2FA Requirement Removed
+- Atlassian Org API Token Created
+- Auth0 Action Deployed
+- Auth0 Anomaly Detection Disabled
+- Auth0 Connection Deleted
+- Auth0 Management API Key Created
+- Auth0 Rule Added (Custom Code In Login Pipeline)
+- Authentication Attempt Against Disabled Account
+- Authentication Attempt Against Disabled User
+- Authentication During Active P0/P1 Incident Window
+- Authentication Success For Recently Deleted User
+- Authentication with Expired Credential
+- Conditional Access Policy Scope Broadened (Less Restrictive)
+- Cross-Tenant Identity Access Granted
+- DCSync Rights Granted Outside Domain Controllers
+- Defensive IAM Policy Detached
+- Disabled AD Account Authenticated Successfully
+- Disabled Account Re-enabled
+- Domain Admin Group Membership Added (AD)
+- Domain Password Policy Weakened
+- Duo Admin Created Via Self-Service Activation
+- Duo Application Set To Bypass Policy
+- Duo Bypass Code Generated
+- Duo Policy Changed: MFA Requirement Removed
+- Duo Push Marked As Fraud By User
+- FIDO2 Hardware Key Removed From Privileged User
+- Federation Trust Relationship Modified
+- Generic OIDC Issuer Trust Modified
+- GitHub App Installed with Repo Admin Permission
+- GitHub Classic PAT Created With repo+workflow+admin:org
+- GitHub Org 2FA Requirement Disabled
+- Golden Ticket Indicator (Anomalous TGT Lifetime)
+- Golden Ticket Indicator: TGT Lifetime > 10h
+- Google Workspace 2SV Disabled For Admin
+- Google Workspace 3rd-Party App Granted Drive Read
+- Google Workspace App Password Issued To Priv User
+- Google Workspace Login Flagged 'Suspicious'
+- IDP Metadata or Signing Cert Changed
+- Impossible Travel Between Two Authentications
+- Impossible Travel: Two Successful Logins <15m, >1000km
+- JIT/PIM Activation At Unusual Hour For User
+- Just-In-Time Elevation Held Beyond Window
+- Kerberoasting: TGS Request With RC4_HMAC
+- Keycloak Client Secret Regenerated
+- Keycloak Master Realm User Created
+- Keycloak User Impersonation Used
+- Keycloak realm-admin Role Granted
+- Kubernetes ClusterRoleBinding to cluster-admin
+- Login From ASN Recently Seen In Credential-Stuffing Activity
+- Login With Empty User-Agent
+- Login With Headless / Bot User Agent
+- Login from Country Outside Allowed Geography
+- Login from Tor / Anonymous Proxy
+- Login with Vendor Default Credentials
+- M365 App Granted Mail.Read / Mail.ReadWrite
+- M365 Inbox Rule Forwards To External Address
+- M365 Mailbox Permission Granted To External User
+- M365 SharePoint Sharing Policy 'Anyone' Enabled
+- M365 Temporary Access Pass Generated For Priv
+- MDM Policy Removed Requiring Device Compliance
+- MFA Bypass Via Emergency / Backup Code
+- MFA Requirement Removed from User Policy
+- New Okta User Created
+- New User Granted Privileged Role <24h After Creation
+- OAuth Access Token Used Before Issue +1s
+- OAuth App Granted Broad Scopes by User
+- OAuth Refresh Token Replayed From Different IP
+- OIDC Client Configured With Wildcard Redirect URI
+- OIDC Client Secret Logged In Plaintext
+- Okta API Token Created
+- Okta API Token Created With Admin Role
+- Okta API Token Revoked
+- Okta Admin Role Assigned to an User or Group
+- Okta Admin Role Assignment Created
+- Okta App Assigned With Federated External Domain
+- Okta App Sign-On Secret Rotated By Non-Admin
+- Okta Application Modified or Deleted
+- Okta Application Sign-On Policy Modified or Deleted
+- Okta Identity Provider Created
+- Okta Login Marked Suspicious-Activity Behaviour
+- Okta MFA Factor Reset For Privileged User
+- Okta MFA Reset or Deactivated
+- Okta Network Zone Deactivated or Deleted
+- Okta Policy Allows 'Everyone' Without MFA
+- Okta Policy Modified or Deleted
+- Okta Policy Rule Modified or Deleted
+- Okta RADIUS Application Added
+- Okta Security Threat Detected
+- Okta Sign-On Policy Deactivated
+- Okta Super Administrator Role Granted
+- Okta Suspicious Activity Reported by End-user
+- Okta Trusted Network Zone Modified
+- Okta Unauthorized Access to App
+- Okta User Account Locked Out
+- Pass-The-Hash Indicator: NTLMv2 With NewCredentials
+- Password History Length Reduced
+- Password Policy Min-Length / Complexity Loosened
+- Password Reset Out of Business Hours for Privileged Account
+- Persistent Session Token Reused from New Device Fingerprint
+- Ping Trust Store Certificate Added
+- PingID Device Removed From Privileged User
+- PingOne MFA Policy Removed
+- PingOne Policy Bypass Applied To 'Everyone'
+- Privileged AD Account Set With DONT_EXPIRE_PASSWORD
+- Privileged Account Deleted
+- Privileged Account NTLM Logon From Untrusted Host
+- Privileged Login Outside Business Hours
+- Privileged Role Assignment
+- Privileged Role Granted Outside Business Hours
+- Privileged Role Granted To Service Account
+- Privileged User Login From Anonymising VPN
+- Privileged User Login From New Country
+- Root SSH Login on Production Host
+- SAML Assertion Issuer Mismatched
+- SAML Assertion Replayed Within Window
+- SAML Response with Mismatched Issuer or Future-Dated NotBefore
+- Service Account Key Used From Non-Pipeline IP
+- Service Account Login Without MFA In Region That Requires It
+- Service Account Used for Interactive Login
+- Session Cookie Replayed From New Geo Within 1h
+- Silver Ticket Indicator (Service Ticket Without TGS Hit)
+- Silver Ticket Indicator: TGS Without Matching TGT
+- Skeleton Key Indicator: Forced Downgrade To DES/RC4
+- Slack App Installed With Bot Scope chat:write.public
+- Slack Channel Shared Externally
+- Slack Workspace 2FA Disabled
+- Successful Login After 50+ Recent Failures
+- Successful Login From Tor Exit Node
+- Sudo Used Without MFA
+- TOTP Secret QR-Code Re-Issued Without Old Factor Removal
+- User Account Creation by Non-Admin Principal
+- User Denied Push Then Approved Within 60s
+- User Granted Privileged Role To Themselves
+- User Login Locale Switched Rapidly
+- User Removed From Protected Users Group
+- Zoom Account Policy Disables Meeting Passcode
+
+## network (63 规则)
+
+- Cloudflared Tunnel Started From Workstation
+- Cobalt Strike Default Named Pipe Pattern
+- Corporate VPN Login Originating From Datacenter ASN
+- DNS Query For .onion Address
+- DNS Query For Homoglyph Of Internal Brand
+- DNS Query With High-Entropy Subdomain (DGA Indicator)
+- DNS Rebinding Indicator (Public→RFC1918 In Same TTL Window)
+- DNS TXT Response Over 250 Bytes From Non-Resolver Host
+- DNS-Over-HTTPS Egress To Non-Sanctioned Resolver
+- DNS-Over-TLS Egress To Public IP
+- DNS-over-HTTPS to Non-Approved Resolver
+- Empire C2 Default URI Pattern Observed
+- GRE Tunnel Initiated By Non-Network Host
+- HTTP CONNECT Method Toward Public IP
+- HTTP Host Header Is IP Literal
+- HTTP Response MIME And Content-Encoding Mismatch
+- HTTP User-Agent Matches PowerShell Default
+- HTTPS Connection To IP Without SNI
+- ICMP Echo With High-Entropy Payload
+- ICMP Echo With Unusually Large Payload
+- JARM Fingerprint Matches Known Cobalt Strike Profile
+- JARM Fingerprint Matches Known Sliver Profile
+- Kerberos Account With Pre-Auth Disabled Used
+- Kerberos Encryption Downgrade to RC4
+- Kerberos Service Ticket Issued With RC4 Encryption
+- LDAP Search Pattern Matches BloodHound Collection
+- LDAP Signing Disabled On Domain Controller
+- Large DNS TXT Response (Possible C2)
+- Large HTTP POST From Workstation To Public IP
+- NTLM Relay Indicator (Same Challenge Reused Across Hosts)
+- NTP Amplification Reflector Attack (Inbound monlist)
+- Outbound Clear-Text Protocol Carrying Credentials
+- Outbound Connection to Known Tor Exit
+- Outbound Connection to Threat-Intel-Blocked IP
+- Outbound FTP Bulk Transfer From Non-Allowlisted Host
+- Outbound IPv6 Teredo / 6to4 Tunneling Traffic
+- Outbound SSH With -R Reverse-Tunnel Flag
+- Outbound TLS to Server with Self-Signed Cert (Non-Allowed)
+- Peer-to-Peer Protocol on Corporate Network
+- RADIUS Authentication Used PAP (Cleartext Password)
+- RDP From Internet to Internal Host
+- RDP Logon Session With Concurrent Active Console Session
+- RPC Remote Registry Write From Workstation Subnet
+- RPC Task Scheduler Create From Workstation
+- Rogue DHCP Server Detected on LAN
+- SMB Authentication Without Signing
+- SMB Null Session Attempt
+- SMB Version 1 Negotiated In Network Flow
+- SMB Write To NETLOGON Share
+- SMB Write To SYSVOL Share From Non-DC
+- SNMP Public Community String Probe From Internet
+- STP Topology Change Advertised By Edge Port
+- Self-Signed Certificate Presented On Public IP
+- Sliver Default Named Pipe Pattern
+- TLS Client Offered TLS 1.0 Or 1.1
+- TLS JA3 Hash in Threat-Intel Match
+- TLS Negotiated Weak Cipher Suite
+- Tor Connection From Corporate Workstation
+- Tor Introduction To Hidden Service From Corp Host
+- WMI Remote Process Creation From Workstation
+- WinRM HTTPS From Workstation To DC
+- WireGuard Handshake From User Workstation
+- curl/wget User-Agent From Workstation Subnet
+
+## threat-anomaly (24 规则)
+
+- AWS Access Key Created From a Client This Principal Has Never Used
+- AWS Control-Plane Call From a Country This Principal Has Never Used
+- AWS Policy Attached by a Principal Who Does Not Normally Attach Policies
+- AWS Privileged Call Volume Far Above This Principal's Peer Group
+- AWS Resource This Principal Has Never Touched
+- AWS S3 Read Volume Far Above This Principal's Normal
+- Admin Role Granted by a Principal Who Does Not Normally Grant Roles
+- Conditional Access Policy Changed by a Rare Actor
+- Drive Download Volume Far Above This Principal's Normal
+- Entra Sign-In Volume Far Above This Principal's Normal
+- GitHub Organisation Setting Changed by a Rare Actor
+- GitLab Token Action From a Country This Principal Has Never Used
+- Group Membership Changes Far Above the Principal's Peer Group
+- Identity-Provider Change by a Principal Who Does Not Normally Make Them
+- Kubernetes Verb This Service Account Has Never Used
+- MFA Factor Reset From a Country This Principal Has Never Used
+- Mailbox Rule Created From a Client This Principal Has Never Used
+- OAuth Application Activity Far Above Its Own Normal
+- Pod Exec Volume Far Above This Principal's Normal
+- Repository Clone Volume Far Above This Principal's Normal
+- Salesforce Export Volume Far Above This Principal's Normal
+- Sign-In From a Client Family This Principal Has Never Used
+- Slack Workspace Admin Action This Principal Has Never Performed
+- Workspace Admin Action This Principal Has Never Performed
